@@ -18,4 +18,12 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/manage', 'DashboardController@manage');
+
+Route::get('/dashboard/{delegate}/delete', function(App\Delegate $delegate) {
+	$delegate->delete();
+	return back();
+});

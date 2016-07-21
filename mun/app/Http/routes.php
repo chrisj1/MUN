@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,8 +13,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['web']], function () {
+	Route::get('/', function () {
+		return view('welcome');
+	});
 });
 
 Route::auth();
@@ -23,7 +27,16 @@ Route::get('/home', 'HomeController@index');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/manage', 'DashboardController@manage');
 
+Route::get('/dashboard/payment', 'DashboardController@payment');
+
 Route::get('/dashboard/{delegate}/delete', function(App\Delegate $delegate) {
-	$delegate->delete();
+	$user_id = Auth::id();
+	if($delegate->user_id == $user_id) {
+		$delegate->delete();
+	}
 	return back();
 });
+
+Route::post('/users/{user}/delegates', 'DashboardController@addDelegate');
+
+

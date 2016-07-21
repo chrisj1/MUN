@@ -18,6 +18,8 @@ class CreateDelegatesTable extends Migration
             $table->string('lastname');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('lunch');
+            $table->integer('requested_committee')->unsigned()->index()->nullable();
             $table->timestamps();
         });
     }

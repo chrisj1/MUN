@@ -27,14 +27,11 @@
 
 <div class="col-md-8 col-md-offset-3">
 	<div class="panel panel-warning">
-		<div class="panel-heading">Moar info</div>
+		<div class="panel-heading">Awards</div>
 
 		<div class="panel-body">
-			Lorem ipsum dolor sit amet, per soluta feugiat ad. Ad stet error constituto mel. Option vocibus docendi et nam. Viris lucilius democritum ex sea. Nihil atomorum postulant an sed, est ut everti timeam suscipit.
-			Adipisci facilisis no usu. Qui ne malis platonem, et ius habeo nonumes. Exerci tibique ne cum, cum cu nostrud utroque. At sit tale natum mucius, augue utinam ne sit. Id sea alii brute, usu et velit intellegat contentiones. Duo cu illud evertitur torquatos, vim verear pertinax vituperatoribus ad.
-			Mel clita facilisi sensibus eu, te vide labore concludaturque mei. Usu an amet debet persecuti, sed postea omittam conclusionemque ut. Sale malis referrentur ne cum, veniam intellegat expetendis eu his. Ut eum esse recusabo, sed ei nostro offendit persecuti. Cu falli dolore deterruisset ius, sed probo velit lobortis ne.
-			Pro feugait reprimique definitionem cu, id vix fugit essent mollis. Ius oratio incorrupte percipitur at, pri fugit graeci quaeque an. Sea cu dolore tritani, solum omnesque quo id, diam moderatius definiebas in pro. Has velit doctus no.
-			Has at antiopam mediocrem. Cum epicurei placerat no, vide fierent patrioque ut vix. Vitae philosophia pri ex, id officiis pertinax iracundia nec. Legere audiam mei te, ei eam mollis definitionem. Sed ad agam semper appareat.
+			Each committee will give out awards, the number of awards per committee will be about a tenth the number of delegates in the committe.
+			Awards include Best delegate, outstanding delegate and honorable mentions.
 		</div>
 	</div>
 </div>

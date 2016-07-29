@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Committee;
 use App\Lunch;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +17,9 @@ use App\Money;
 class DashboardController extends Controller
 {
     public static $price_per_delegate = 75.00;
+    public static $registration_deadline;
+    public static $registration_deadline_text;
+    public static $max_delegates = 20;
 
     /**
      * Create a new controller instance.
@@ -24,6 +28,8 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
+        DashboardController::$registration_deadline = Carbon::createFromDate(2016,7,29);
+        DashboardController::$registration_deadline_text = DashboardController::$registration_deadline->toFormattedDateString();
         $this->middleware('auth');
     }
 
@@ -45,12 +51,22 @@ class DashboardController extends Controller
 
         $lunches = Lunch::all();
 
+        $count = 1;
+
         return view('dashboard.manage', ['delegates' => $delegates, 'user' => $user,
-            'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches]);
+            'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches, 'count'=>$count]);
     }
 
     public function addDelegate(Request $request)
     {
+        $time = Carbon::now();
+        $pastRegistration = DashboardController::$registration_deadline->gte($time);
+
+        if (count(Delegate::all()->where('user_id', '=', Auth::user()->id)) >= DashboardController::$max_delegates && $pastRegistration) {
+            return back()->withErrors(['manage'=>'You have already registered the maximum of twenty delegates please wait
+            until ' . DashboardController::$registration_deadline_text . ' to register more.']);
+        }
+
         $this->validate($request, [
             'firstname' => 'required|AlphaNum',
             'lastname' => 'required|AlphaNum',
@@ -79,6 +95,36 @@ class DashboardController extends Controller
                 '%#10n', DashboardController::$price_per_delegate),
             'amount_due' => DashboardController::money_format('%#10n', $cost - $paid)]);
     }
+
+    public function edit(Request $request, Delegate $delegate) {
+
+        $id = Auth::id();
+        $user = Auth::user();
+        $delegates = Delegate::where('user_id', '=', $id)->get();
+
+        $committees = Committee::all();
+
+        $lunches = Lunch::all();
+
+        return view('dashboard.edit', ['delegate'=>$delegate, 'delegates' => $delegates, 'user' => $user,
+            'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches]);
+    }
+
+    public function editDelegate(Request $request, Delegate $delegate) {
+        $this->validate($request, [
+            'firstname' => 'required|AlphaNum',
+            'lastname' => 'required|AlphaNum',
+        ]);
+
+        $delegate->firstname = $request->firstname;
+        $delegate->lastname = $request->lastname;
+        $delegate->requested_committee = $request->requested_committee;
+        $delegate->lunch = $request->lunch;
+        $delegate->save();
+        return back();
+    }
+
+
 
     function money_format($format, $number)
     {

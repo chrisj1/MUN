@@ -37,6 +37,10 @@ Route::get('/dashboard/{delegate}/delete', function(App\Delegate $delegate) {
 	return back();
 });
 
+Route::get('/dashboard/{delegate}/edit', 'DashboardController@edit');
+
 Route::post('/users/{user}/delegates', 'DashboardController@addDelegate');
+
+Route::post('/delegates/{delegate}/edit', 'DashboardController@editDelegate');
 
 

@@ -50,6 +50,7 @@
             <table class="table table-striped sortable">
                 <thead>
                 <tr>
+                    <th>#</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Requested Committee</th>
@@ -58,6 +59,9 @@
                 <tbody>
                 @foreach ($delegates as $delegate)
                     <tr>
+                        <td>
+                            {{ $count++ }}
+                        </td>
                         <td>
                             {{ $delegate->firstname }}
                         </td>

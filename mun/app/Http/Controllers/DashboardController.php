@@ -13,6 +13,7 @@ use App\Http\Requests;
 use App\User;
 use App\Delegate;
 use App\Money;
+use App\admin;
 
 class DashboardController extends Controller
 {
@@ -33,8 +34,17 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Dashboard main page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
+        $user_id = Auth::id();
+        if(admin::where('user_id', '=', $user_id)->count() == 1) {
+            return redirect('/dashboards/admin');
+        }
         return view('dashboard.index');
     }
 

@@ -43,4 +43,6 @@ Route::post('/users/{user}/delegates', 'DashboardController@addDelegate');
 
 Route::post('/delegates/{delegate}/edit', 'DashboardController@editDelegate');
 
+Route::get('/dashboards/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index');
 

@@ -46,3 +46,11 @@ Route::post('/delegates/{delegate}/edit', 'DashboardController@editDelegate');
 Route::get('/dashboards/admin', 'AdminController@index');
 Route::get('/admin', 'AdminController@index');
 
+Route::get('/email', function(Request $request) {
+    Mail::raw('text to email', function($message) {
+        $message->to('chrisjjerrett@gmail.com');
+    });
+    return $request;
+});
+
+

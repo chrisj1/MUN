@@ -5,7 +5,6 @@
 @endsection
 
 @section('stuff')
-<div class="col-md-8">
 	<div class="panel panel-info">
 		<div class="panel-heading">Dashboard</div>
 
@@ -14,8 +13,6 @@
 			updates and infomation about the confrence!
 		</div>
 	</div>
-</div>
-<div class="col-md-8">
 	<div class="panel panel-danger">
 		<div class="panel-heading">Payment Due November 30th!</div>
 
@@ -23,9 +20,7 @@
 			Please make sure you are payed in full or your spot may be forfeit.
 		</div>
 	</div>
-</div>
 
-<div class="col-md-8 col-md-offset-3">
 	<div class="panel panel-warning">
 		<div class="panel-heading">Awards</div>
 
@@ -34,5 +29,4 @@
 			Awards include Best delegate, outstanding delegate and honorable mentions.
 		</div>
 	</div>
-</div>
 @endsection

@@ -15,8 +15,10 @@ class CreateCommitteesTable extends Migration
         Schema::create('committees', function (Blueprint $table) {
             $table->increments('id');
             $table->string('committee');
+	        $table->string('full_name');
             $table->string('topic');
             $table->string('chair_email');
+	        $table->string('chair_name');
             $table->timestamps();
         });
     }

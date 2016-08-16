@@ -13,7 +13,8 @@ use App\Http\Requests;
 use App\User;
 use App\Delegate;
 use App\Money;
-use App\admin;
+use App\Admin;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -42,7 +43,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        if(admin::where('user_id', '=', $user_id)->count() == 1) {
+        if(Admin::where('user_id', '=', $user_id)->count() == 1) {
             return redirect('/dashboards/admin');
         }
         return view('dashboard.index');
@@ -97,13 +98,18 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
-        $paid = $user->amount_payed;
+        $payments = DB::select('select * from payments where user_id = ?', [$id]);
+
+	    $paid_amount = 0;
+	    foreach($payments as $payment) {
+	    	$paid_amount+=$payment->amount;
+	    }
         $cost = DashboardController::$price_per_delegate * count(Delegate::where('user_id', '=', $id)->get());
 
-        return view('dashboard.payment', ['paid' => $paid, 'cost' => DashboardController::money_format('%#10n', $cost),
+        return view('dashboard.payment', ['paid' => $paid_amount, 'cost' => DashboardController::money_format('%#10n', $cost),
             'price_per_delegate' => DashboardController::money_format(
                 '%#10n', DashboardController::$price_per_delegate),
-            'amount_due' => DashboardController::money_format('%#10n', $cost - $paid)]);
+            'amount_due' => DashboardController::money_format('%#10n', $cost - $paid_amount)]);
     }
 
     public function edit(Request $request, Delegate $delegate) {
@@ -136,7 +142,7 @@ class DashboardController extends Controller
 
 
 
-    function money_format($format, $number)
+    public static function money_format($format, $number)
     {
         $regex = '/%((?:[\^!\-]|\+|\(|\=.)*)([0-9]+)?' .
             '(?:#([0-9]+))?(?:\.([0-9]+))?([in%])/';

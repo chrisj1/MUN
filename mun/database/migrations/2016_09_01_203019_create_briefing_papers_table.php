@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePositionsTable extends Migration
+class CreateBriefingPapersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreatePositionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('briefing_papers', function (Blueprint $table) {
             $table->increments('id');
 	        $table->integer('committee_id')->unsigned()->index()->nullable();
 	        $table->foreign('committee_id')->references('id')->on('committees');
 	        $table->string('name');
-	        $table->integer('delegate')->unsigned()->index()->nullable();
-	        $table->foreign('delegate')->references('id')->on('delegates');
+	        $table->string('file_path');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePositionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('positions');
+        Schema::drop('briefing_papers');
     }
 }

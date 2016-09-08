@@ -28,12 +28,12 @@
 
 	<table class="table table-striped sortable" id="table">
 		<thead>
-		<tr>
-			<th>#</th>
-			<th>Lunch</th>
-			<th>Orders</th>
-			<th></th>
-		</tr>
+			<tr>
+				<th>#</th>
+				<th>Lunch</th>
+				<th>Orders</th>
+				<th></th>
+			</tr>
 		</thead>
 		<tbody>
 		@foreach ($lunches as $lunch)

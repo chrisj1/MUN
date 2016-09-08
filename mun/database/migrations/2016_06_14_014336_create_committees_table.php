@@ -19,6 +19,8 @@ class CreateCommitteesTable extends Migration
             $table->string('topic');
             $table->string('chair_email');
 	        $table->string('chair_name');
+	        $table->integer('clone_of')->unsigned()->index()->nullable();
+	        $table->foreign('clone_of')->references('id')->on('committees')->onDelete('cascade');
             $table->timestamps();
         });
     }

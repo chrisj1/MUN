@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BriefingPaper;
 use App\Committee;
 use App\Lunch;
 use Carbon\Carbon;
@@ -15,6 +16,9 @@ use App\Delegate;
 use App\Money;
 use App\Admin;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Http\Response;
 
 class DashboardController extends Controller
 {
@@ -227,5 +231,10 @@ class DashboardController extends Controller
             $format = str_replace($fmatch[0], $value, $format);
         }
         return $format;
+    }
+
+    public function downloadPaper(BriefingPaper $briefingPaper) {
+	    $file = Storage::disk('local')->get("papers/" . $briefingPaper->id . ".pdf");
+	    return (new Response($file, 200))->header('Content-Type', 'application/pdf', 'filename="doc"');
     }
 }

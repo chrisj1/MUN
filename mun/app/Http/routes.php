@@ -22,6 +22,15 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::auth();
+Route::get('/aboutUs', function () {
+	return view('aboutUs');
+});
+Route::get('/directions', function () {
+	return view('directions');
+});
+Route::get('/campusMap', function () {
+	return view('map');
+});
 Route::get('/home', 'HomeController@index');
 Route::get('/admin/delegates', 'AdminController@delegates');
 Route::get('/dashboard', 'DashboardController@index');
@@ -65,3 +74,13 @@ Route::post('/dashboard/admin/addLunch/add', 'AdminController@createLunch');
 Route::get('/admin/lunches/{lunch}/delete', 'AdminController@deleteLunch');
 Route::get('/admin/addAPosition', 'AdminController@addAPosition');
 Route::get('/admin/addPositions', 'AdminController@addPositions');
+Route::get('/admin/committees/{committee}/clone', 'AdminController@cloneCommitteeView');
+Route::post('/admin/addAPosition', 'AdminController@createPosition');
+Route::post('/admin/{committee}/clone/add', 'AdminController@createClone');
+Route::get('/admin/papers', 'AdminController@briefingPapers');
+Route::get('/download/{briefingPaper}', 'DashboardController@downloadPaper');
+Route::get('/admin/addPaper', 'AdminController@addPaper');
+Route::post('admin/addPaper', 'AdminController@addAPaper');
+Route::get('/admin/assignPositions', 'AdminController@assignPositions');
+Route::get('admin/{user}/assign', 'AdminController@userAssign');
+Route::post('/admin/{user}/assign', 'AdminController@postAssign');

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Contracts\Logging\Log;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Admin;
@@ -28,12 +29,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function isAdmin() {
-	    if(count(Admin::where('user_id', Auth::id())->get()) == 0) {
-		    return false;
-	    }
-	    return true;
-    }
 
 }

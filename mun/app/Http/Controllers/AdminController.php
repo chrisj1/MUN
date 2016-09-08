@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\BriefingPaper;
 use App\position;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use App\GenericPosition;
 
 use App\Committee;
 use App\Lunch;
 use App\User;
 use App\Delegate;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
@@ -32,8 +35,7 @@ class AdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function index()
-	{
+	public function index(){
 		$delegates = Delegate::all();
 		$users = User::all();
 		$lunches = Lunch::all();
@@ -47,8 +49,7 @@ class AdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function delegates()
-	{
+	public function delegates(){
 		$delegates = Delegate::all();
 		$users = User::all();
 		$lunches = Lunch::all();
@@ -63,8 +64,7 @@ class AdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function lunches()
-	{
+	public function lunches() {
 		$delegates = Delegate::all();
 		$users = User::all();
 		$lunches = Lunch::all();
@@ -74,8 +74,7 @@ class AdminController extends Controller
 			'users' => $users, 'lunches' => $lunches, 'committees' => $committees]);
 	}
 
-	public function delegations()
-	{
+	public function delegations() {
 		$users = User::all();
 		$delegations = new Collection();
 		$delegates = Delegate::all();
@@ -92,8 +91,7 @@ class AdminController extends Controller
 			'delegations' => $delegations, 'delegates' => $delegates]);
 	}
 
-	public function delegation(User $user)
-	{
+	public function delegation(User $user) {
 		$count = 0;
 		$delegates = Delegate::all()->where('user_id', $user->id);
 
@@ -117,7 +115,6 @@ class AdminController extends Controller
 			'cost' => $cost, 'paid_amount' => $paid_amount,
 			'amount_due' => $amount_due, 'payments' => $payments]);
 	}
-
 
 	public function edit(Delegate $delegate)
 	{
@@ -164,8 +161,7 @@ class AdminController extends Controller
 		return view('dashboard.admin.addpayment', ['delegations' => $delegations]);
 	}
 
-	public function createPayment(Request $request)
-	{
+	public function createPayment(Request $request) {
 		$this->validate($request, [
 			'cents' => 'required|between:0,99|min:0',
 			'dollars' => 'required|min:0|integer',
@@ -305,6 +301,11 @@ class AdminController extends Controller
 	}
 
 	public function deleteCommittee(Committee $committee) {
+		$positions = position::all()->where('committee_id', $committee->id);
+		foreach ($positions as $position) {
+			$position->delete();
+		}
+
 		$committee->delete();
 		return back();
 	}
@@ -366,4 +367,149 @@ class AdminController extends Controller
 		return view('dashboard.admin.addPositions');
 	}
 
+	public function cloneCommitteeView(Committee $committee) {
+		$positions = position::all()->where('committee_id', $committee->id);
+
+		return view('dashboard.admin.cloneCommittee', ['committee'=>$committee, 'positions'=>$positions]);
+	}
+
+	public function createPosition(Request $request) {
+
+		$position = new position();
+		$position->committee_id = $request->committee;
+		$position->name = $request->position;
+
+		$position->save();
+
+		return redirect('/admin/positions');
+	}
+
+	public function createClone(Request $request, Committee $committee) {
+		$positions = Input::get('positions');
+		$newCommittee = new Committee();
+		$newCommittee->committee = $committee->committee;
+		$newCommittee->full_name = $committee->full_name;
+		$newCommittee->topic = $committee->topic;
+		$newCommittee->clone_of = $committee->id;
+		$newCommittee->save();
+
+		foreach ($positions as $key => $position) {
+			$selectedPosition = position::find($key);
+			$newPosition = new position();
+			$newPosition->committee_id = $newCommittee->id;
+			$newPosition->name = $selectedPosition->name;
+			$newPosition->save();
+		}
+
+		return redirect("/admin/committees");
+	}
+
+	public function briefingPapers() {
+		return view('dashboard.admin.papers', ['papers'=>BriefingPaper::all(), 'committees'=>Committee::all()]);
+	}
+
+	public function addPaper() {
+		$committees = Committee::all()->where('clone_of', null);
+
+		return view('dashboard.admin.addPaper', ['committees'=>$committees]);
+	}
+
+	public function addAPaper(Request $request) {
+		$this->validate($request, [
+			'name' => 'required|unique:briefing_papers',
+		]);
+
+		if(strcmp($request->file('paper')->guessExtension(), 'pdf')) {
+			return back()->withErrors('File must be of type pdf');
+		}
+
+		$paper = new BriefingPaper();
+		$paper->committee_id = $request->committee;
+		$paper->name = $request->name;
+		$paper->save();
+
+		$fileName = $paper->id . '.' .
+			$request->file('paper')->getClientOriginalExtension();
+
+		$path = base_path() . '/storage/app/papers/';
+
+		$request->file('paper')->move($path, $fileName);
+
+		$paper->file_path = $path . $fileName;
+		$paper->save();
+
+		return redirect('/admin/papers');
+	}
+
+	public function assignPositions(Request $request) {
+		$committees  = Committee::all();
+		$positions = position::all();
+		$users = User::all();
+		$delegates = Delegate::all();
+
+		$delegations = new Collection();
+		foreach ($users as $user) {
+			if(!$this->userIsAdmin($user->id)) {
+				$delegations->add($user);
+			}
+		}
+
+
+		return view('dashboard.admin.assignPositions', ['committees'=>$committees, 'positions'=>$positions,
+			'users'=>$delegations, 'delegates'=>$delegates]);
+	}
+
+	public function userAssign(User $user) {
+		$positions = position::all();
+		$committees = Committee::all();
+		$delegates = Delegate::all()->where('user_id', $user->id);
+
+		$genPos = new Collection();
+		foreach ($positions as $position) {
+			$genPo = new GenericPosition();
+			$genPo->position = $position;
+			$committee = Committee::find($position->committee_id);
+			if($position->user_id != null && $position->user_id != $user->id) {
+				continue;
+			}
+			if($committee->clone_of == null) {
+				$genPo->committee = $committee;
+			} else {
+				$genPo->committee = Committee::find($committee->clone_of);
+			}
+			$genPos->add($genPo);
+		}
+		return view('dashboard.admin.assignPositionDelegation', ['positions'=>$genPos,
+		'committees'=>$committees, 'delegates'=>$delegates, 'user'=>$user]);
+	}
+
+	public function userIsAdmin($user_id)
+	{
+		if (Admin::where('user_id', '=', $user_id)->exists()) {
+			return true;
+		}
+		return false;
+	}
+
+	public function postAssign(User $user, Request $request) {
+		$positions = position::all();
+		$positions = $positions->where('user_id', null)->union($positions->where('user_id', $user->id));
+
+		if(count($positions) > 0) {
+			foreach($positions as $position) {
+				$position->user_id = null;
+				$position->save();
+			}
+		}
+
+		$selectedPositions= Input::get('position');
+		if(count($selectedPositions) > 0) {
+			foreach ($selectedPositions as $key => $position) {
+				$selectedposition = position::find($key);
+				$selectedposition->user_id = $user->id;
+				$selectedposition->save();
+			}
+		}
+		return back();
+	}
 }

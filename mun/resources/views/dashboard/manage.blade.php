@@ -81,7 +81,6 @@
         <div class="panel-heading"><h3>Add a delegate</h3></div>
         <div class="panel-body">
             @if (count($errors) > 0)
-
                 <div class="alert alert-danger" role="alert">
                     @foreach ($errors->all() as $error)
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -109,8 +108,8 @@
                     <label for="requested_committee">Request Committee</label>
                     <select  name="requested_committee"class="form-control" value="{{Request::old('requested_committee')}}">
                         <option value='0'></option>
-                        @foreach ($committees as $committee)
-                            <option value={{$committee->id}}>{{$committee->committee}}</option>
+                        @foreach ($committees->where('clone_of', null) as $committee)
+                            <option value={{$committee->id}}>{{$committee->full_name . " - " . $committee->topic}}</option>
                         @endforeach
                     </select>
                 </div>

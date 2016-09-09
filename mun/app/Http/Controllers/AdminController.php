@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\BriefingPaper;
-use App\position;
+use App\Position;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -256,7 +256,7 @@ class AdminController extends Controller
 	}
 
 	public function positions() {
-		$positions = position::all();
+		$positions = Position::all();
 		$committees = Committee::all();
 		$delegates = Delegate::all();
 		$users = User::all();
@@ -265,7 +265,7 @@ class AdminController extends Controller
 	}
 
 	public function committees() {
-		$positions = position::all();
+		$positions = Position::all();
 		$committees = Committee::all();
 		$delegates = Delegate::all();
 		$users = User::all();
@@ -301,7 +301,7 @@ class AdminController extends Controller
 	}
 
 	public function deleteCommittee(Committee $committee) {
-		$positions = position::all()->where('committee_id', $committee->id);
+		$positions = Position::all()->where('committee_id', $committee->id);
 		foreach ($positions as $position) {
 			$position->delete();
 		}
@@ -368,14 +368,14 @@ class AdminController extends Controller
 	}
 
 	public function cloneCommitteeView(Committee $committee) {
-		$positions = position::all()->where('committee_id', $committee->id);
+		$positions = Position::all()->where('committee_id', $committee->id);
 
 		return view('dashboard.admin.cloneCommittee', ['committee'=>$committee, 'positions'=>$positions]);
 	}
 
 	public function createPosition(Request $request) {
 
-		$position = new position();
+		$position = new Position();
 		$position->committee_id = $request->committee;
 		$position->name = $request->position;
 
@@ -394,8 +394,8 @@ class AdminController extends Controller
 		$newCommittee->save();
 
 		foreach ($positions as $key => $position) {
-			$selectedPosition = position::find($key);
-			$newPosition = new position();
+			$selectedPosition = Position::find($key);
+			$newPosition = new Position();
 			$newPosition->committee_id = $newCommittee->id;
 			$newPosition->name = $selectedPosition->name;
 			$newPosition->save();
@@ -443,7 +443,7 @@ class AdminController extends Controller
 
 	public function assignPositions(Request $request) {
 		$committees  = Committee::all();
-		$positions = position::all();
+		$positions = Position::all();
 		$users = User::all();
 		$delegates = Delegate::all();
 
@@ -460,7 +460,7 @@ class AdminController extends Controller
 	}
 
 	public function userAssign(User $user) {
-		$positions = position::all();
+		$positions = Position::all();
 		$committees = Committee::all();
 		$delegates = Delegate::all()->where('user_id', $user->id);
 
@@ -492,7 +492,7 @@ class AdminController extends Controller
 	}
 
 	public function postAssign(User $user, Request $request) {
-		$positions = position::all();
+		$positions = Position::all();
 		$positions = $positions->where('user_id', null)->union($positions->where('user_id', $user->id));
 
 		if(count($positions) > 0) {
@@ -505,7 +505,7 @@ class AdminController extends Controller
 		$selectedPositions= Input::get('position');
 		if(count($selectedPositions) > 0) {
 			foreach ($selectedPositions as $key => $position) {
-				$selectedposition = position::find($key);
+				$selectedposition = Position::find($key);
 				$selectedposition->user_id = $user->id;
 				$selectedposition->save();
 			}

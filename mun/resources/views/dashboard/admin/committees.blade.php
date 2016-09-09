@@ -66,11 +66,11 @@
 					{{ $committee->chair_name }}
 				</td>
 				<td>
-					{{count(\App\position::all()->where('committee_id', $committee->id))}}
+					{{count(\App\Position::all()->where('committee_id', $committee->id))}}
 				</td>
 				<td>
-					{{count(\App\position::all()->where('committee_id', $committee->id))
-					 - count(\App\position::all()->where('committee_id', $committee->id)->where('delegate', null))}}
+					{{count(\App\Position::all()->where('committee_id', $committee->id))
+					 - count(\App\Position::all()->where('committee_id', $committee->id)->where('delegate', null))}}
 				</td>
 				<td>
 					{{$committee->clone_of == null ? "" : $committee->find($committee->clone_of)->full_name . " - " . $committee->find($committee->clone_of)->topic}}

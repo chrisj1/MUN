@@ -58,7 +58,7 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
-    public function manage()
+    public function manage(User $user)
     {
         $id = Auth::id();
         $user = Auth::user();
@@ -73,8 +73,11 @@ class DashboardController extends Controller
 
         $count = 1;
 
+	    $positions = Position::all()->where('user_id', $user->id);
+
         return view('dashboard.manage', ['delegates' => $delegates, 'user' => $user,
-            'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches, 'count'=>$count]);
+            'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches, 'count'=>$count,
+            'positions' => $positions]);
     }
 
     public function addDelegate(Request $request)

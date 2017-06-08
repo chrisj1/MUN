@@ -10,15 +10,17 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\GenericPosition;
-
 use App\Committee;
 use App\Lunch;
 use App\User;
 use App\Delegate;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+
+use Log;
 
 class AdminController extends Controller {
 	/**
@@ -536,4 +538,48 @@ class AdminController extends Controller {
 		}
 		return back();
 	}
+
+	public function beginAutoAssign(User $user) {
+		return $this->autoAssignDelegation($user);
+	}
+
+	/*
+	 * Ranks committee popularity vs spots availible
+	 */
+	public function rankCommitteePopularity(Committee $committee) {
+		$positions = count((Position::all()->where('committee_id', $committee->id)));
+		$requests_raw = \App\Request::all()->where('committee_id', $committee->id);
+		$total_requests = 0;
+		foreach ($requests_raw as $r) {
+			$total_requests += $r->amount;
+		}
+		if($positions == 0) return -1;
+		return ((float) $total_requests)/$positions;
+
+	}
+
+	function compareCommitteePopularity($a, $b) {
+		error_log("<--------->");
+		$a_pop = $this->rankCommitteePopularity(new Committee($a));
+		$b_pop = $this->rankCommitteePopularity(new Committee($b));
+		if ($a_pop < $b_pop) {
+			return -1;
+		} elseif ($a_pop > $b_pop) {
+			return 1;
+		}
+		return 0;
+	}
+
+	public function autoAssignDelegation(User $user) {
+		$allRequests = \App\Request::all()->where('user_id', $user->id);
+
+		$array = $allRequests->toArray();
+		usort($array, array($this, "compareCommitteePopularity"));
+
+		foreach ($allRequests as $r) {
+			error_log($r->id);
+		}
+		return $array;
+	}
+
 }

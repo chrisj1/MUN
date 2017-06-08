@@ -5,7 +5,7 @@
 @endsection
 
 @section('stuff')
-    @if(count($delegates) > 0)
+    @if(count($positions) > 0)
         <table class="table table-striped sortable">
             <thead>
             <tr>

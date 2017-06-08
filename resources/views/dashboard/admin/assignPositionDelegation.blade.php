@@ -13,7 +13,7 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					Requested: <span class="amount">{{count(\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id)) > 0 ?
-						\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id)[0]->amount : 0}}</span>
+						 collect(\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id))->first()->amount : 0}}</span>
 				</div>
 			</div>
 			<table class="table table-striped sortable">

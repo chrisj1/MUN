@@ -13,6 +13,13 @@
 		<th>Amount Requested</th>
 		<th>Amount Assigned</th>
 	</thead>
+	<tbody>
+	@foreach($committees as $committee)
+		<tr>
+
+		</tr>
+	@endforeach
+	</tbody>
 </table>
 
 <h3>Assignments</h3>

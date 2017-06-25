@@ -25,16 +25,17 @@
 		});
 	</script>
 
-	<table class="table table-striped sortable" id="table">
-		<thead>
+	<div style="margin-left: 5%; margin-right: 5%">
+		<table class="table table-striped sortable" id="table">
+			<thead>
 			<tr>
 				<th>School</th>
 				<th>Requested</th>
 				<th>Assigned</th>
 				<th></th>
 			</tr>
-		</thead>
-		<tbody>
+			</thead>
+			<tbody>
 			@foreach ($users as $user)
 				<tr class="">
 					<td>{{$user->school}}</td>
@@ -50,6 +51,7 @@
 					<td><a class="btn btn-success btn-xs" href="/admin/{{$user->id}}/assign">Assign</a> </td>
 				</tr>
 			@endforeach
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</div>
 @endsection

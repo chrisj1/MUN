@@ -28,46 +28,51 @@
 	</script>
 
 
-	<div class="row">
-		<a class="btn btn-primary" href="/admin/addAPosition">Add a position</a>
-		<a class="btn btn-primary" href="/admin/addPositions">Add Positions</a>
-		<a class="btn btn-primary" href="/admin/assignPositions">Assign Positions</a>
+	<div style="margin: 5%">
+		<div class="row" >
+			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addAPosition">Add Single Position</a>
+			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addPositions">Add Multiple Positions</a>
+		</div>
+		<div class="row">
+			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/assignPositions">Assign Positions</a>
+		</div>
 	</div>
-	<table class="table table-striped sortable" id="table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Committee</th>
-				<th>Country/Name/ect.</th>
-				<th>Delegate</th>
-				<th>Delegation</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-		@foreach ($positions as $position)
-			<tr>
-				<td>
-					{{ ++$count}}
-				</td>
-				<td>
-					{{ \App\Committee::find($position->committee_id)->committee }}
-				</td>
-				<td>
-					{{ $position->name }}
-				</td>
-				<td>
-					{{ $delegates->get($position->delegate) != null ? $delegates->get($position->delegate-1)->firstname . ' ' .$delegates->get($position->delegate-1)->lastname : "not assigned"}}
-				</td>
-				<td>
-					{{ $position->user_id != null ? \App\User::find($position->user_id)->school : "not assigned"}}
-				</td>
-				<td class="action">
+	<div style="margin-left: 5%; margin-right: 5%">
+		<table class="table table-striped sortable" id="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Committee</th>
+					<th>Country/Name/ect.</th>
+					<th>Delegate</th>
+					<th>Delegation</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			@foreach ($positions as $position)
+				<tr>
+					<td>
+						{{ ++$count}}
+					</td>
+					<td>
+						{{ \App\Committee::find($position->committee_id)->committee }}
+					</td>
+					<td>
+						{{ $position->name }}
+					</td>
+					<td>
+						{{ $delegates->get($position->delegate) != null ? $delegates->get($position->delegate-1)->firstname . ' ' .$delegates->get($position->delegate-1)->lastname : "not assigned"}}
+					</td>
+					<td>
+						{{ $position->user_id != null ? \App\User::find($position->user_id)->school : "not assigned"}}
+					</td>
+					<td class="action">
 
-				</td>
-			</tr>
-		@endforeach
-		</tbody>
-	</table>
-
+					</td>
+				</tr>
+			@endforeach
+			</tbody>
+		</table>
+	</div>
 @endsection

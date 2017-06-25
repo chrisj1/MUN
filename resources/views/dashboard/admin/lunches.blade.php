@@ -24,38 +24,38 @@
 		});
 	</script>
 
-	<a href="/admin/addLunch" class="btn btn-primary">Add Lunch</a>
+	<div style="margin-right: 5%; margin-left: 5%">
+		<a href="/admin/addLunch" class="btn btn-primary">Add Lunch</a>
+		<table class="table table-striped sortable" id="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Lunch</th>
+					<th>Orders</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			@foreach ($lunches as $lunch)
+				<tr>
+					<td>
+						{{ $lunch->id}}
+					</td>
+					<td>
+						{{ $lunch->name}}
+					</td>
+					<td>
+						{{ count($delegates->where('lunch', $lunch->id)) }}
+					</td>
 
-	<table class="table table-striped sortable" id="table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Lunch</th>
-				<th>Orders</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-		@foreach ($lunches as $lunch)
-			<tr>
-				<td>
-					{{ $lunch->id}}
-				</td>
-				<td>
-					{{ $lunch->name}}
-				</td>
-				<td>
-					{{ count($delegates->where('lunch', $lunch->id)) }}
-				</td>
-
-				<td class="action">
-					<a href="/admin/lunches/{{$lunch->id}}/delete" class="btn btn-xs btn-danger">Delete</a>
-				</td>
-			</tr>
-		@endforeach
-		</tbody>
-	</table>
-
+					<td class="action">
+						<a href="/admin/lunches/{{$lunch->id}}/delete" class="btn btn-xs btn-danger">Delete</a>
+					</td>
+				</tr>
+			@endforeach
+			</tbody>
+		</table>
+	</div>
 
 	<script type="text/javascript">
 		var elems = document.getElementsByClassName('confirmation');

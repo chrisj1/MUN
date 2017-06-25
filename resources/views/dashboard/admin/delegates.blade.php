@@ -26,46 +26,47 @@
     </script>
 
     <h1 class="text-center">Delegates</h1>
-    <div id="f"></div>
-    <table class="table table-striped sortable" id="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Requested Committee</th>
-            <th>Delegation</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($delegates as $delegate)
+    <div style="margin-right: 5%; margin-left: 5%">
+        <table class="table table-striped sortable" id="table">
+            <thead>
             <tr>
-                <td>
-                    {{ ++$count}}
-                </td>
-                <td>
-                    {{ $delegate->firstname }}
-                </td>
-
-                <td>
-                    {{ $delegate->lastname }}
-                </td>
-
-                <td>
-                    {{ \App\Committee::find($delegate->requested_committee)['committee']}}
-                </td>
-                <td>
-                    {{\App\User::find($delegate->user_id)->school}}
-                </td>
-                <td class="action">
-                    <a class="confirmation btn btn-danger btn-xs" name="{{$delegate->firstname . $delegate->lastname}}" style="margin:5px; justify-content:flex-end" href="/dashboard/{{ $delegate->id }}/delete">Delete</a>
-                    <a class="btn btn-primary btn-xs" style="margin:5px; justify-content:flex-end" href="/dashboard/admin/{{ $delegate->id }}/edit">Edit</a>
-                </td>
+                <th>#</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Requested Committee</th>
+                <th>Delegation</th>
+                <th></th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach ($delegates as $delegate)
+                <tr>
+                    <td>
+                        {{ ++$count}}
+                    </td>
+                    <td>
+                        {{ $delegate->firstname }}
+                    </td>
+
+                    <td>
+                        {{ $delegate->lastname }}
+                    </td>
+
+                    <td>
+                        {{ \App\Committee::find($delegate->requested_committee)['committee']}}
+                    </td>
+                    <td>
+                        {{\App\User::find($delegate->user_id)->school}}
+                    </td>
+                    <td class="action">
+                        <a class="confirmation btn btn-danger btn-xs" name="{{$delegate->firstname . $delegate->lastname}}" style="margin:5px; justify-content:flex-end" href="/dashboard/{{ $delegate->id }}/delete">Delete</a>
+                        <a class="btn btn-primary btn-xs" style="margin:5px; justify-content:flex-end" href="/dashboard/admin/{{ $delegate->id }}/edit">Edit</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <script type="text/javascript">
         var elems = document.getElementsByClassName('confirmation');
         var confirmIt = function (e) {

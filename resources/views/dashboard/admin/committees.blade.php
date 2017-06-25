@@ -27,17 +27,19 @@
 					{"orderable": true, "searchable": true},
 					{"orderable": true, "searchable": true},
 					{"orderable": false, "searchable": false},
+					{"orderable": false, "searchable": false},
 					{"orderable": false, "searchable": false}
 				]
 			})
 		});
 	</script>
-		<a style="width: 150px" href="/admin/addCommittee" class="btn btn-primary">Add Committee</a>
+	<div style="margin-right: 5%; margin-left: 5%">
+	<a style="width: 150px" href="/admin/addCommittee" class="btn btn-primary">Add Committee</a>
 
-	<input data-offstyle="danger" style="align-content: right" id="toggle-event" data-width="200" checked type="checkbox" data-toggle="toggle"
-	       data-on="Showing Clones" data-off="Not Showing Clones">
+		<input data-offstyle="danger" style="align-content: right" id="toggle-event" data-width="200" checked type="checkbox" data-toggle="toggle"
+		       data-on="Showing Clones" data-off="Not Showing Clones">
 
-	<table class="table table-striped sortable" id="table">
+		<table class="table table-striped sortable" id="table">
 		<thead>
 		<tr>
 			<th>#</th>
@@ -90,7 +92,7 @@
 		@endforeach
 		</tbody>
 	</table>
-
+	</div>
 	<script type="text/javascript">
 		var elems = document.getElementsByClassName('confirmation');
 		var confirmIt = function (e) {

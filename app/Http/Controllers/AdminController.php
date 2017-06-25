@@ -582,4 +582,10 @@ class AdminController extends Controller {
 		return $array;
 	}
 
+	public function admin() {
+		$usersA = User::all();
+
+		return view('dashboard.admin.admin');
+	}
+
 }

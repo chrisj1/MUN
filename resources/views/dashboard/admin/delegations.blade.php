@@ -27,43 +27,44 @@
 	</script>
 
 	<h1 class="text-center">Delegations</h1>
-	<div id="f"></div>
-	<table class="table table-striped sortable" id="table">
-		<thead>
-		<tr>
-			<th>#</th>
-			<th>School</th>
-			<th>Moderator</th>
-			<th>Moderator Email</th>
-			<th>Delegates</th>
-			<th></th>
-		</tr>
-		</thead>
-		<tbody>
-		@foreach ($delegations as $delegation)
+	<div id="f" style="margin-left: 5%; margin-right: 5%">
+		<table class="table table-striped sortable" id="table">
+			<thead>
 			<tr>
-				<td>
-					{{ ++$count}}
-				</td>
-				<td>
-					{{ $delegation->school }}
-				</td>
-
-				<td>
-					{{ $delegation->name }}
-				</td>
-
-				<td>
-					{{$delegation->email}}
-				</td>
-
-				<td>{{count(DB::table('delegates')->where('user_id', $delegation->id)->get())}}</td>
-				<td class="action">
-					<a href={{"/dashboard/admin/delgation/" . $delegation->id}} class="btn-primary btn-xs" >View</a>
-					<a href={{"/dashboard/autoassign/" . $delegation->id}}>{{"/dashboard/autoassign/" . $delegation->id}}</a>
-				</td>
+				<th>#</th>
+				<th>School</th>
+				<th>Moderator</th>
+				<th>Moderator Email</th>
+				<th>Delegates</th>
+				<th></th>
 			</tr>
-		@endforeach
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+			@foreach ($delegations as $delegation)
+				<tr>
+					<td>
+						{{ ++$count}}
+					</td>
+					<td>
+						{{ $delegation->school }}
+					</td>
+
+					<td>
+						{{ $delegation->name }}
+					</td>
+
+					<td>
+						{{$delegation->email}}
+					</td>
+
+					<td>{{count(DB::table('delegates')->where('user_id', $delegation->id)->get())}}</td>
+					<td class="action">
+						<a href={{"/dashboard/admin/delgation/" . $delegation->id}} class="btn-primary btn-xs" >View</a>
+						<a href={{"/dashboard/autoassign/" . $delegation->id}}>{{"/dashboard/autoassign/" . $delegation->id}}</a>
+					</td>
+				</tr>
+			@endforeach
+			</tbody>
+		</table>
+	</div>
 @endsection

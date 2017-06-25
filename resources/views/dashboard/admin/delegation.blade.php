@@ -5,7 +5,30 @@
 		{{$user->school}}
 	</h1>
 
-	<div class="col-md-8 ">
+	<script>
+		$(document).ready(function () {
+			$('#table').DataTable({
+				"bPaginate": true,
+				"bLengthChange": false,
+				"bFilter": true,
+				"bSort": true,
+				"bInfo": false,
+				"bAutoWidth": false,
+				"ordering": true,
+				"pageLength": 15,
+
+				"columns": [
+					{ "orderable": false, "searchable" : false },
+					{ "orderable": true, "searchable": true},
+					{ "orderable": true, "searchable": true},
+					{ "orderable": true, "searchable": true},
+					{ "orderable": false, "searchable": false}
+				]
+			})
+		});
+	</script>
+
+	<div class="col-md-8" style="margin-right: 5%; margin-left: 5%">
 		<table class="table table-bordered table-responsive">
 			<tr>
 				<td>
@@ -48,29 +71,6 @@
 			</tr>
 		</table>
 	</div>
-
-	<script>
-		$(document).ready(function () {
-			$('#table').DataTable({
-				"bPaginate": true,
-				"bLengthChange": false,
-				"bFilter": true,
-				"bSort": true,
-				"bInfo": false,
-				"bAutoWidth": false,
-				"ordering": true,
-				"pageLength": 15,
-
-				"columns": [
-					{ "orderable": false, "searchable" : false },
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": false, "searchable": false}
-				]
-			})
-		});
-	</script>
 	
 	<table class="table table-striped sortable" id="table">
 		<thead>

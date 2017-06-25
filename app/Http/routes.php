@@ -88,7 +88,7 @@ Route::post('/admin/{user}/assign', 'AdminController@postAssign');
 Route::get('/dashboard/requests', 'DashboardController@requests');
 Route::post('/users/{user}/request', 'DashboardController@requestPos');
 Route::get("/dashboard/autoassign/{user}", 'AdminController@beginAutoAssign');
-
+Route::get('/admin/admin', 'AdminController@admin');
 
 Route::get('/418', function() {
 	abort(418);

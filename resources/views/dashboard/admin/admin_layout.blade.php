@@ -1,18 +1,28 @@
 @extends('layout')
 
 @section('content')
-    <div class="container">
-        <ul class="nav nav-tabs" style="margin: 1%; padding-bottom: 1%">
-            <li role="presentation"><a href="/dashboard/" class="list-group-item">Home</a></li>
-            <li role="presentation"><a href="/admin/delegates" class="list-group-item">Delegates</a></li>
-            <li role="presentation"><a href="/admin/delegations" class="list-group-item">Delegations</a></li>
-            <li role="presentation"><a href="/admin/payment" class="list-group-item">Payment</a></li>
-            <li role="presentation"><a href="/admin/positions" class="list-group-item">Positions</a></li>
-            <li role="presentation"><a href="/admin/committees" class="list-group-item">Committees</a></li>
-            <li role="presentation"><a href="/admin/lunches" class="list-group-item">Lunches</a></li>
-            <li role="presentation"><a href="/admin/papers" class="list-group-item">Briefing Papers</a></li>
-        </ul>
-        @yield('stuff')
-    </div>
+    @yield('stuff')
 @endsection
 
+@section('nav')
+    </li>
+         <li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li role="presentation"><a href="/dashboard/">Home</a></li>
+                <li role="presentation"><a href="/admin/delegates">Delegates</a></li>
+                <li role="presentation"><a href="/admin/delegations">Delegations</a></li>
+                <li role="presentation"><a href="/admin/payment">Payment</a></li>
+                <li role="presentation"><a href="/admin/positions">Positions</a></li>
+                <li role="presentation"><a href="/admin/committees">Committees</a></li>
+                <li role="presentation"><a href="/admin/lunches">Lunches</a></li>
+                <li role="presentation"><a href="/admin/papers">Briefing Papers</a></li>
+	            @if(Auth::user()->id == 2)
+                    <li role="separator" class="divider"></li>
+		            <li role="presentation"><a href="/admin/admin">Administration</a></li>
+	            @endif
+            </ul>
+        </li>
+    </li>
+@endsection

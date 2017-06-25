@@ -5,22 +5,10 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 	<title>@yield('title')</title>
 
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-72015410-1', 'auto');
-		ga('require', 'linkid');
-		ga('send', 'pageview');
-	</script>
-
 </header>
-<body>
-	<nav class="navbar navbar-default">
+<body style="padding-top: 70px">
+	<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 100px">
 	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 	        <span class="sr-only">Toggle navigation</span>
@@ -56,7 +44,7 @@
 		            <li><a href="#">Separated link</a></li>
 		          </ul>
 		        </li>
-	        </li>
+		      @yield('nav')
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	        @if(Auth::check())
@@ -86,4 +74,15 @@
 			<p class="text-muted credit"> SJPMUN-2016 </p>
 		</div>
 	</div>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-72015410-1', 'auto');
+		ga('require', 'linkid');
+		ga('send', 'pageview');
+	</script>
 </footer>

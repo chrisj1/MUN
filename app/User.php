@@ -31,12 +31,10 @@ class User extends Authenticatable
     ];
 
 	function isAdmin() {
-		$user_id = $this->id;
-		if(count(Admin::where('user_id', $user_id)->get()) != 1) {
-			return false;
-		}
-		return true;
+		return count(Admin::where('user_id', $this->id)->get()) == 1;
 	}
 
-
+	function isChair() {
+		return false;
+	}
 }

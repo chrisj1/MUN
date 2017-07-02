@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Admin;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -64,11 +65,17 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'school' => $data['school'],
         ]);
+	    if($user->id == 1) {
+		    $admin = new Admin();
+		    $admin->user_id = 1;
+		    $admin->save();
+	    }
+	    return $user;
     }
 }

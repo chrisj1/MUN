@@ -49,10 +49,8 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
-    {
-        $user_id = Auth::id();
-        if(Admin::where('user_id', '=', $user_id)->count() == 1) {
+    public function index(){
+        if(Auth::user()->isAdmin()) {
             return redirect('/dashboards/admin');
         }
         return view('dashboard.index');

@@ -9,7 +9,6 @@ use App\Utils;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\GenericPosition;
 use App\Committee;
 use App\Lunch;
 use App\User;
@@ -19,8 +18,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-
-use Log;
 
 class AdminController extends Controller {
 	/**
@@ -42,7 +39,9 @@ class AdminController extends Controller {
 		$lunches = Lunch::all();
 		$committees = Committee::all();
 
-		return view('dashboard.admin.index', ['delegates' => $delegates, 'users' => $users, 'lunches' => $lunches, 'committees' => $committees]);
+		return view('dashboard.admin.index',
+			['delegates' => $delegates, 'users' => $users,
+				'lunches' => $lunches, 'committees' => $committees]);
 	}
 
 	/**
@@ -57,7 +56,9 @@ class AdminController extends Controller {
 		$committees = Committee::all();
 		$count = 0;
 
-		return view('dashboard.admin.delegates', ['delegates' => $delegates, 'users' => $users, 'lunches' => $lunches, 'committees' => $committees, 'count' => $count]);
+		return view('dashboard.admin.delegates',
+			['delegates' => $delegates, 'users' => $users,
+				'lunches' => $lunches, 'committees' => $committees, 'count' => $count]);
 	}
 
 	/**
@@ -280,8 +281,8 @@ class AdminController extends Controller {
 	public function createCommittee(Request $request) {
 		$this->validate($request, [
 			'abbreviation' => 'alpha|required',
-			'chair_email' => 'email|required',
-			'chair_name' => 'required',
+			//'chair_email' => 'email|required',
+			//'chair_name' => 'required',
 			'name'=> 'required',
 			'topic'=>'required',
 			'level'=>'required'
@@ -292,8 +293,8 @@ class AdminController extends Controller {
 		$committee->topic = $request->topic;
 		$committee->notes = $request->notes;
 		$committee->level = $request->level;
-		$committee->chair_email = $request->chair_email;
-		$committee->chair_name = $request->chair_name;
+		//$committee->chair_email = $request->chair_email;
+		//$committee->chair_name = $request->chair_name;
 		$committee->committee = $request->abbreviation;
 		$committee->high_school = $request->high_school == "on";
 
@@ -583,9 +584,9 @@ class AdminController extends Controller {
 	}
 
 	public function admin() {
-		$usersA = User::all();
+		$users = User::all();
 
-		return view('dashboard.admin.admin');
+		return view('dashboard.admin.admin', ['users'=>$users]);
 	}
 
 }

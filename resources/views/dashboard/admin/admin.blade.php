@@ -15,9 +15,40 @@
 				<th>Email</th>
 				<th>Created At</th>
 				<th>Updated At</th>
-				<th>Is Admin</th>
+				<th>Role</th>
+				<th>Actions</th>
 			</tr>
 			</thead>
+			<tbody>
+				@foreach($users as $user)
+					<tr>
+						<td>{{$user->id}}</td>
+						<td>{{$user->name}}</td>
+						<td>{{$user->school}}</td>
+						<td>{{$user->email}}</td>
+						<td>{{$user->created_at}}</td>
+						<td>{{$user->updated_at}}</td>
+						<td>{{$user->isAdmin() ? "Admin": "User"}}</td>
+						<td>
+							<div class="dropdown">
+								<button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+									Actions
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									@if(!$user->isAdmin())
+										<li><a href="#">Make Administrator</a></li>
+									@endif
+									@if(!$user->isChair())
+										<li><a href="#">Make Chair</a></li>
+										@endif
+									<li><a href="#">Delete</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				@endforeach
+			</tbody>
 		</table>
 
 		<h3 class="h3 text-center">Admins</h3>
@@ -32,6 +63,19 @@
 				<th>Updated At</th>
 			</tr>
 			</thead>
+			<tbody>
+			@foreach($users->filter(function ($value, $key) {
+                return $value->isAdmin();
+			}) as $user)
+				<tr>
+					<td>{{$user->id}}</td>
+					<td>{{$user->name}}</td>
+					<td>{{$user->email}}</td>
+					<td>{{$user->created_at}}</td>
+					<td>{{$user->updated_at}}</td>
+				</tr>
+			@endforeach
+			</tbody>
 		</table>
 	</div>
 

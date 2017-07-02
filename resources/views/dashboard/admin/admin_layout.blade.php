@@ -18,7 +18,7 @@
                 <li role="presentation"><a href="/admin/committees">Committees</a></li>
                 <li role="presentation"><a href="/admin/lunches">Lunches</a></li>
                 <li role="presentation"><a href="/admin/papers">Briefing Papers</a></li>
-	            @if(Auth::user()->id == 2)
+	            @if(Auth::user()->id == 1)
                     <li role="separator" class="divider"></li>
 		            <li role="presentation"><a href="/admin/admin">Administration</a></li>
 	            @endif

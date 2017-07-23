@@ -25,7 +25,7 @@
 
 	// when video ends
 	function onPlayerStateChange(event) {
-		if(event.data === 0) {
+		if (event.data === 0) {
 			window.location = "/";
 		}
 	}

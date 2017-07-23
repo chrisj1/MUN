@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="panel panel-danger">
-		<div class="panel-heading">Security Council 1 (SC1) and the Fund for Peace </div>
+		<div class="panel-heading">Security Council 1 (SC1) and the Fund for Peace</div>
 
 		<div class="panel-body">
 			Security Council 1 (SC1) and the Fund for Peace will be filmed for the purpose of
@@ -36,7 +36,8 @@
 		<div class="panel-heading">Awards</div>
 
 		<div class="panel-body">
-			Each committee will give out awards, the number of awards per committee will be about a tenth the number of delegates in the committe.
+			Each committee will give out awards, the number of awards per committee will be about a tenth the number of
+			delegates in the committe.
 			Awards include Best delegate, outstanding delegate and honorable mentions.
 		</div>
 	</div>
@@ -45,8 +46,10 @@
 			<div class="panel-heading">Assigning positions</div>
 
 			<div class="panel-body">
-				Positions will assigned manually to each delegation after the registration deadline. You will have to finalize the assignments, just
-				because a committee is requested<strong> does not mean you are guaranteed to receive that position.</strong>
+				Positions will assigned manually to each delegation after the registration deadline. You will have to
+				finalize the assignments, just
+				because a committee is requested<strong> does not mean you are guaranteed to receive that
+					position.</strong>
 			</div>
 		</div>
 	</div>

@@ -16,11 +16,11 @@
 				"pageLength": 15,
 
 				"aoColumns": [
-					{"bSearchable":true, "bSortable":true},
-					{"bSearchable":true, "bSortable":true},
-					{"bSearchable":true, "bSortable":true},
-					{"bSearchable":false, "bSortable":false},
-					{"bSearchable":false, "bSortable":false}
+					{"bSearchable": true, "bSortable": true},
+					{"bSearchable": true, "bSortable": true},
+					{"bSearchable": true, "bSortable": true},
+					{"bSearchable": false, "bSortable": false},
+					{"bSearchable": false, "bSortable": false}
 				]
 			})
 		});
@@ -40,25 +40,25 @@
 			</tr>
 			</thead>
 			<tbody>
-				@foreach ($payments as $payment)
-					<tr>
-						<td>
-							{{ $payment->id}}
-						</td>
-						<td>
-							{{ $users->find($payment->user_id)->school }}
-						</td>
-						<td>
-							{{\App\Http\Controllers\DashboardController::money_format('%#10n', $payment->amount/100)}}
-						</td>
-						<td>
-							{{$payment->note}}
-						</td>
-						<td>
-							<a  class="btn btn-danger btn-xs confirm" href="/dashboard/admin/deletePayment/{{$payment->id}}">Delete</a>
-						</td>
-					</tr>
-				@endforeach
+			@foreach ($payments as $payment)
+				<tr>
+					<td>
+						{{ $payment->id}}
+					</td>
+					<td>
+						{{ $users->find($payment->user_id)->school }}
+					</td>
+					<td>
+						{{\App\Http\Controllers\DashboardController::money_format('%#10n', $payment->amount/100)}}
+					</td>
+					<td>
+						{{$payment->note}}
+					</td>
+					<td>
+						<a class="btn btn-danger btn-xs confirm" href="/dashboard/admin/deletePayment/{{$payment->id}}">Delete</a>
+					</td>
+				</tr>
+			@endforeach
 			</tbody>
 		</table>
 	</div>

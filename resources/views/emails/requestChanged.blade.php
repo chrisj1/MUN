@@ -9,9 +9,9 @@
 
 <table>
 	<thead>
-		<th>Committee</th>
-		<th>Amount Requested</th>
-		<th>Amount Assigned</th>
+	<th>Committee</th>
+	<th>Amount Requested</th>
+	<th>Amount Assigned</th>
 	</thead>
 	<tbody>
 	@foreach($committees as $committee)

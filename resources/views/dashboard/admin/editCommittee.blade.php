@@ -19,7 +19,7 @@
 			<div class="form-group">{{csrf_field()}}</div>
 			<div class="form-group">
 				<label for="name" class="form_label">Committee Name</label>
-				<input name="name" class="form-control" type="text" value="{{$committee->full_name}}" >
+				<input name="name" class="form-control" type="text" value="{{$committee->full_name}}">
 			</div>
 
 			<div class="form-group">
@@ -40,7 +40,7 @@
 
 			<div class="form-group">
 				<label for="chair_email" class="form_label">Chair Email</label>
-				<input name="chair_email" class="form-control" type="email" value="{{$committee->chair_email}}" >
+				<input name="chair_email" class="form-control" type="email" value="{{$committee->chair_email}}">
 			</div>
 
 			<input class="btn btn-danger" type="submit">

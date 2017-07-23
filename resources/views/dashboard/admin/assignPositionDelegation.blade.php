@@ -33,7 +33,7 @@
 								<td>{{$position->position->name}}</td>
 								<td>{{$committee->full_name ." - " .
 									$committee->id}}</td>
-								<td><input committee="{{$committee->id}}"  data-toggle="toggle" type="checkbox"
+								<td><input committee="{{$committee->id}}" data-toggle="toggle" type="checkbox"
 								           data-off="Not assigned" data-on="Assigned"
 								           name="position[{{$position->position->id}}]"
 								           {{$position->position->user_id == $user->id ? "checked": ""}}

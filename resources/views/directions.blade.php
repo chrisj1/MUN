@@ -31,7 +31,7 @@
 			var trafficLayer = new google.maps.TrafficLayer();
 			trafficLayer.setMap(map);
 
-			if(navigator.geolocation) {
+			if (navigator.geolocation) {
 				directions(map);
 			} else {
 				alert("Location is turned off, please enable it to get directions");
@@ -46,7 +46,7 @@
 		}
 
 		function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-			navigator.geolocation.getCurrentPosition(function(position) {
+			navigator.geolocation.getCurrentPosition(function (position) {
 				user = {
 					lat: position.coords.latitude,
 					lng: position.coords.longitude
@@ -59,7 +59,7 @@
 					origin: from,
 					destination: go,
 					travelMode: 'DRIVING'
-				}, function(response, status) {
+				}, function (response, status) {
 					if (status === 'OK') {
 						directionsDisplay.setDirections(response);
 						directionsDisplay.setPanel(document.getElementById('right-panel'));
@@ -75,5 +75,6 @@
 	        async defer></script>
 	<hr>
 
-	<div class="container">Maps via <a href="https://developers.google.com/maps/documentation/javascript/">google maps javascript api</a></div>
+	<div class="container">Maps via <a href="https://developers.google.com/maps/documentation/javascript/">google maps
+			javascript api</a></div>
 @endsection

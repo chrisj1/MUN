@@ -19,7 +19,7 @@
 			<div class="form-group">{{csrf_field()}}</div>
 			<div class="form-group">
 				<label for="name" class="form_label">Committee Name</label>
-				<input name="name" class="form-control" type="text" value="{{Request::old('name')}}" >
+				<input name="name" class="form-control" type="text" value="{{Request::old('name')}}">
 			</div>
 
 			<div class="form-group">
@@ -34,17 +34,19 @@
 
 			<div class="form-group">
 				<label for="high_school" class="form_label">High School</label>
-				<input name="high_school" class="form-control" type="checkbox" {{Request::old('high_school') == 'on' ? "checked" : ""}}">
+				<input name="high_school" class="form-control"
+				       type="checkbox" {{Request::old('high_school') == 'on' ? "checked" : ""}}">
 			</div>
 
 			<div class="form-group">
 				<label for="level" class="form_label">Level</label>
-				<input name="level" class="form-control" type="text" cols="60" rows="5"  value="{{Request::old('level')}}" >
+				<input name="level" class="form-control" type="text" cols="60" rows="5"
+				       value="{{Request::old('level')}}">
 			</div>
 
 			<div class="form-group">
 				<label for="notes" class="form_label">Notes</label>
-				<input name="notes" class="form-control" type="" value="{{Request::old('notes')}}" >
+				<input name="notes" class="form-control" type="" value="{{Request::old('notes')}}">
 			</div>
 
 			<div class="form-group">
@@ -55,7 +57,7 @@
 
 			<div class="form-group">
 				<label for="chair_email" class="form_label">Chair Email</label>
-				<input name="chair_email" class="form-control" type="email" value="{{Request::old('chair_email')}}" >
+				<input name="chair_email" class="form-control" type="email" value="{{Request::old('chair_email')}}">
 			</div>
 
 			<input class="btn btn-danger" type="submit">

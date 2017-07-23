@@ -9,16 +9,16 @@
 	<form method="POST" action="/users/{{$user->id}}/request">
 		{{ csrf_field() }}
 		<h1>Middle School</h1>
-	<table class="table table-striped">
-		<thead>
+		<table class="table table-striped">
+			<thead>
 			<tr>
 				<th style="width: 25%">Committee</th>
 				<th style="width: 20%">Number requested</th>
 				<th style="width: 25%">Level</th>
-				<th style="width: 25%" >Notes</th>
+				<th style="width: 25%">Notes</th>
 			</tr>
-		</thead>
-		<tbody>
+			</thead>
+			<tbody>
 			@foreach($committees->where('high_school', 0) as $committee)
 				<tr>
 					<td>{{$committee->committee . " - " . $committee->topic}}</td>
@@ -26,10 +26,10 @@
 						<select onchange="getDelNumber()" name="committee[{{$committee->id}}]" class="delNumber">
 							@for($i = 0; $i <= 30; $i++)
 								<option value="{{$i}}"
-									@if(count(\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id)) == 0)
-									@else
-										{{\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id)->first()->amount == $i ? "selected" : ""}}
-									@endif
+								@if(count(\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id)) == 0)
+										@else
+									{{\App\Request::all()->where('committee_id', $committee->id)->where('user_id', $user->id)->first()->amount == $i ? "selected" : ""}}
+										@endif
 								>{{$i}}</option>
 							@endfor
 						</select>
@@ -42,8 +42,8 @@
 					</td>
 				</tr>
 			@endforeach
-		</tbody>
-	</table>
+			</tbody>
+		</table>
 		<h1>High School</h1>
 		<table class="table table-striped">
 			<thead>
@@ -51,7 +51,7 @@
 				<th style="width: 25%">Committee</th>
 				<th style="width: 20%">Number requested</th>
 				<th style="width: 25%">Level</th>
-				<th style="width: 25%" >Notes</th>
+				<th style="width: 25%">Notes</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -94,7 +94,7 @@
 		function getDelNumber() {
 			var selects = document.getElementsByClassName("delNumber");
 			var total = 0;
-			for(var i = 0; i < selects.length; i++) {
+			for (var i = 0; i < selects.length; i++) {
 				var element = selects[i];
 				total += element.selectedIndex;
 			}

@@ -16,12 +16,12 @@
 				"pageLength": 15,
 
 				"columns": [
-					{ "orderable": false, "searchable" : false },
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": false, "searchable": false}
+					{"orderable": false, "searchable": false},
+					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
+					{"orderable": false, "searchable": false}
 				]
 			})
 		});
@@ -29,7 +29,7 @@
 
 
 	<div style="margin: 5%">
-		<div class="row" >
+		<div class="row">
 			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addAPosition">Add Single Position</a>
 			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addPositions">Add Multiple Positions</a>
 		</div>
@@ -40,14 +40,14 @@
 	<div style="margin-left: 5%; margin-right: 5%">
 		<table class="table table-striped sortable" id="table">
 			<thead>
-				<tr>
-					<th>#</th>
-					<th>Committee</th>
-					<th>Country/Name/ect.</th>
-					<th>Delegate</th>
-					<th>Delegation</th>
-					<th></th>
-				</tr>
+			<tr>
+				<th>#</th>
+				<th>Committee</th>
+				<th>Country/Name/ect.</th>
+				<th>Delegate</th>
+				<th>Delegation</th>
+				<th></th>
+			</tr>
 			</thead>
 			<tbody>
 			@foreach ($positions as $position)

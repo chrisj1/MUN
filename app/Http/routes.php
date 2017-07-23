@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\http\Request;
-use App\User;
 use App\Admin;
 
 /*
@@ -36,13 +34,12 @@ Route::get('/admin/delegates', 'AdminController@delegates');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/manage', 'DashboardController@manage');
 Route::get('/dashboard/payment', 'DashboardController@payment');
-Route::get('/dashboard/{delegate}/delete', function(App\Delegate $delegate) {
+Route::get('/dashboard/{delegate}/delete', function (App\Delegate $delegate) {
 	$user_id = Auth::id();
 
-	if(count(Admin::where('user_id', Auth::id())->get()) != 0) {
+	if (count(Admin::where('user_id', Auth::id())->get()) != 0) {
 		$delegate->delete();
-	}
-	else if($delegate->user_id == $user_id) {
+	} else if ($delegate->user_id == $user_id) {
 		$delegate->delete();
 	} else {
 		abort(403);
@@ -90,6 +87,6 @@ Route::post('/users/{user}/request', 'DashboardController@requestPos');
 Route::get("/dashboard/autoassign/{user}", 'AdminController@beginAutoAssign');
 Route::get('/admin/admin', 'AdminController@admin');
 
-Route::get('/418', function() {
+Route::get('/418', function () {
 	abort(418);
 });

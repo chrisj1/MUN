@@ -15,12 +15,12 @@
 				"pageLength": 15,
 
 				"aoColumns": [
-					{"bSearchable":false, "bSortable":false},
-					{"bSearchable":true, "bSortable":true},
-					{"bSearchable":true, "bSortable":true},
-					{"bSearchable":true, "bSortable":true},
-					{ "bSearchable" : false, "bSortable" : true },
-					{"bSearchable":false, "bSortable":false}
+					{"bSearchable": false, "bSortable": false},
+					{"bSearchable": true, "bSortable": true},
+					{"bSearchable": true, "bSortable": true},
+					{"bSearchable": true, "bSortable": true},
+					{"bSearchable": false, "bSortable": true},
+					{"bSearchable": false, "bSortable": false}
 				]
 			})
 		});

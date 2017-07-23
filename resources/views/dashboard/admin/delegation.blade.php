@@ -18,11 +18,11 @@
 				"pageLength": 15,
 
 				"columns": [
-					{ "orderable": false, "searchable" : false },
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": true, "searchable": true},
-					{ "orderable": false, "searchable": false}
+					{"orderable": false, "searchable": false},
+					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
+					{"orderable": false, "searchable": false}
 				]
 			})
 		});
@@ -71,7 +71,7 @@
 			</tr>
 		</table>
 	</div>
-	
+
 	<table class="table table-striped sortable" id="table">
 		<thead>
 		<tr>
@@ -100,8 +100,11 @@
 					{{ \App\Committee::find($delegate->requested_committee)['committee']}}
 				</td>
 				<td class="action">
-					<a class="confirmation btn btn-danger btn-xs" name="{{$delegate->firstname . $delegate->lastname}}" style="margin:5px; justify-content:flex-end" href="/dashboard/{{ $delegate->id }}/delete">Delete</a>
-					<a class="btn btn-primary btn-xs" style="margin:5px; justify-content:flex-end" href="/dashboard/{{ $delegate->id }}/edit">Edit</a>
+					<a class="confirmation btn btn-danger btn-xs" name="{{$delegate->firstname . $delegate->lastname}}"
+					   style="margin:5px; justify-content:flex-end"
+					   href="/dashboard/{{ $delegate->id }}/delete">Delete</a>
+					<a class="btn btn-primary btn-xs" style="margin:5px; justify-content:flex-end"
+					   href="/dashboard/{{ $delegate->id }}/edit">Edit</a>
 				</td>
 			</tr>
 		@endforeach
@@ -125,8 +128,8 @@
 				'searching': false,
 
 				"columns": [
-					{ "orderable": true, "searchable" : false },
-					{ "orderable": true, "searchable" : false },
+					{"orderable": true, "searchable": false},
+					{"orderable": true, "searchable": false},
 				]
 			})
 		});
@@ -134,21 +137,21 @@
 
 	<table class="table table-striped sortable" id="payments">
 		<thead>
-			<th>Time</th>
-			<th>Amount</th>
+		<th>Time</th>
+		<th>Amount</th>
 		</tr>
 		</thead>
 		<tbody>
-			@foreach ($payments as $payment)
-				<tr>
-					<td>
-						{{$payment->created_at}}
-					</td>
-					<td>
-						{{ \App\Http\Controllers\DashboardController::money_format('%#10n', $payment->amount/100.0)}}
-					</td>
-				</tr>
-			@endforeach
+		@foreach ($payments as $payment)
+			<tr>
+				<td>
+					{{$payment->created_at}}
+				</td>
+				<td>
+					{{ \App\Http\Controllers\DashboardController::money_format('%#10n', $payment->amount/100.0)}}
+				</td>
+			</tr>
+		@endforeach
 		</tbody>
 	</table>
 @endsection

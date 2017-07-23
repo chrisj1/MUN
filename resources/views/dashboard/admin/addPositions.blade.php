@@ -32,7 +32,7 @@
 				<input name="position" class="form-control" type="text" value="{{Request::old('position')}}">
 			</div>
 
-			<input class="btn btn-danger" type="submit" >
+			<input class="btn btn-danger" type="submit">
 		</form>
 	</div>
 @endsection

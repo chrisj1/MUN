@@ -48,7 +48,7 @@
 					@endphp
 					<td>{{$total}}</td>
 					<td>{{count($positions->where('user_id', $user->id))}}</td>
-					<td><a class="btn btn-success btn-xs" href="/admin/{{$user->id}}/assign">Assign</a> </td>
+					<td><a class="btn btn-success btn-xs" href="/admin/{{$user->id}}/assign">Assign</a></td>
 				</tr>
 			@endforeach
 			</tbody>

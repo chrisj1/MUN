@@ -4,6 +4,5 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BriefingPaper extends Model
-{
+class BriefingPaper extends Model {
 }

@@ -1,5 +1,8 @@
-# Welcome to the SJP MUN XI portal for this year!
+#  SJP MUN XII Registration System (WIP)
 This website uses the laravel framework.
+
+## What is this?
+It started off after my first year on the secretariat for SJPMUN. THe regration system involved too many spreadsheets for my liking. So I simplified it for the users (maybe not for me). It allows registrants to request positions, input delegates, position and committee assignment and chairing.
 
 ## How to run locally:
 1. Create mysql database

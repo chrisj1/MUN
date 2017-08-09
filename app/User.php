@@ -27,6 +27,9 @@ class User extends Authenticatable {
 	}
 
 	function isChair() {
+		foreach(Committee::all() as $committee) {
+			if($committee->chair == $this->id) return true;
+		}
 		return false;
 	}
 }

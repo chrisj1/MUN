@@ -26,6 +26,7 @@
 					{"orderable": true, "searchable": true},
 					{"orderable": true, "searchable": true},
 					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
 					{"orderable": false, "searchable": false},
 					{"orderable": false, "searchable": false},
 					{"orderable": false, "searchable": false}
@@ -46,53 +47,57 @@
 				<th>#</th>
 				<th>Committee</th>
 				<th>Topic</th>
+				<th>Level</th>
 				<th>Chair</th>
 				<th>Positions</th>
 				<th>Assigned Positions</th>
 				<th>Clone of</th>
-				<th>Middle or High School</th>
+				<th>Grade</th>
 				<th style="width: 15%"></th>
 			</tr>
 			</thead>
 			<tbody>
-			@foreach ($committees as $committee)
-				<tr class="{{$committee->clone_of == null ? "" : "hidethis"}}">
-					<td>
-						{{ $committee->id}}
-					</td>
-					<td>
-						{{ $committee->full_name }}
-					</td>
-					<td>
-						{{$committee->topic}}
-					</td>
-					<td>
-						{{ $committee->chair_name }}
-					</td>
-					<td>
-						{{count(\App\Position::all()->where('committee_id', $committee->id))}}
-					</td>
-					<td>
-						{{count(\App\Position::all()->where('committee_id', $committee->id))
-						 - count(\App\Position::all()->where('committee_id', $committee->id)->where('delegate', null))}}
-					</td>
-					<td>
-						{{$committee->clone_of == null ? "" : $committee->find($committee->clone_of)->full_name . " - " . $committee->find($committee->clone_of)->topic}}
-					</td>
-					<td>
-						{{$committee->high_school ? "High School": "Middle School"}}
-					</td>
-					<td class="action">
-						<a href="/admin/committees/{{$committee->id}}/delete"
-						   class="confirmation btn btn-xs btn-danger">Delete</a>
-						<a href="/admin/committees/{{$committee->id}}/edit" class="btn btn-xs btn-primary">Edit</a>
-						@if($committee->clone_of == null)
-							<a href="/admin/committees/{{$committee->id}}/clone"
-							   class="btn btn-xs btn-success confirmation2">Clone</a>
-						@endif
-					</td>
-				</tr>
-			@endforeach
+				@foreach ($committees as $committee)
+					<tr class="{{$committee->clone_of == null ? "" : "hidethis"}}">
+						<td>
+							{{ $committee->id}}
+						</td>
+						<td>
+							{{ $committee->full_name }}
+						</td>
+						<td>
+							{{$committee->topic}}
+						</td>
+						<td>
+							{{ $committee->chair_name }}
+						</td>
+						<td>
+							{{ $committee->level }}
+						</td>
+						<td>
+							{{count(\App\Position::all()->where('committee_id', $committee->id))}}
+						</td>
+						<td>
+							{{count(\App\Position::all()->where('committee_id', $committee->id))
+							 - count(\App\Position::all()->where('committee_id', $committee->id)->where('delegate', null))}}
+						</td>
+						<td>
+							{{$committee->clone_of == null ? "" : $committee->find($committee->clone_of)->full_name . " - " . $committee->find($committee->clone_of)->topic}}
+						</td>
+						<td>
+							{{$committee->high_school ? "High School": "Middle School"}}
+						</td>
+						<td class="action">
+							<a href="/admin/committees/{{$committee->id}}/delete"
+							   class="confirmation btn btn-xs btn-danger">Delete</a>
+							<a href="/admin/committees/{{$committee->id}}/edit" class="btn btn-xs btn-primary">Edit</a>
+							@if($committee->clone_of == null)
+								<a href="/admin/committees/{{$committee->id}}/clone"
+								   class="btn btn-xs btn-success confirmation2">Clone</a>
+							@endif
+						</td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

@@ -60,7 +60,7 @@
 					<td>{{count(DB::table('delegates')->where('user_id', $delegation->id)->get())}}</td>
 					<td class="action">
 						<a href={{"/dashboard/admin/delgation/" . $delegation->id}} class="btn-primary btn-xs" >View</a>
-						<a href={{"/dashboard/autoassign/" . $delegation->id}}>{{"/dashboard/autoassign/" . $delegation->id}}</a>
+
 					</td>
 				</tr>
 			@endforeach

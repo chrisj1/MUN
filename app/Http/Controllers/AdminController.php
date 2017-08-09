@@ -250,7 +250,7 @@ class AdminController extends Controller {
 	}
 
 	public function createCommittee(Request $request) {
-		$this->validate($request, ['abbreviation' => 'alpha|required', //'chair_email' => 'email|required',
+		$this->validate($request, ['abbreviation' => 'required', //'chair_email' => 'email|required',
 			//'chair_name' => 'required',
 			'name' => 'required', 'topic' => 'required', 'level' => 'required']);
 
@@ -262,7 +262,7 @@ class AdminController extends Controller {
 		//$committee->chair_email = $request->chair_email;
 		//$committee->chair_name = $request->chair_name;
 		$committee->committee = $request->abbreviation;
-		$committee->high_school = $request->high_school == "on";
+		$committee->high_school = !$request->high_school;
 
 		//return $request;
 
@@ -503,14 +503,10 @@ class AdminController extends Controller {
 		$array = $allRequests->toArray();
 		usort($array, array($this, "compareCommitteePopularity"));
 
-		foreach ($allRequests as $r) {
-			error_log($r->id);
-		}
 		return $array;
 	}
 
 	function compareCommitteePopularity($a, $b) {
-		error_log("<--------->");
 		$a_pop = $this->rankCommitteePopularity(new Committee($a));
 		$b_pop = $this->rankCommitteePopularity(new Committee($b));
 		if ($a_pop < $b_pop) {

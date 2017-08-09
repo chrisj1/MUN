@@ -34,8 +34,10 @@
 
 			<div class="form-group">
 				<label for="high_school" class="form_label">High School</label>
-				<input name="high_school" class="form-control"
-				       type="checkbox" {{Request::old('high_school') == 'on' ? "checked" : ""}}">
+				<select name="high_school" class="form-control" type="text" cols="60" rows="5">
+					<option value=0 {{Request::old('high_school') == 0 ? "selected" : ""}}>High School</option>
+					<option value=1 {{Request::old('high_school') == 1 ? "selected" : ""}}>Middle School</option>
+				</select>
 			</div>
 
 			<div class="form-group">

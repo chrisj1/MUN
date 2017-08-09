@@ -40,7 +40,7 @@
 									<li><a href="#">Make Administrator</a></li>
 								@endif
 								@if(!$user->isChair())
-									<li><a href="#">Make Chair</a></li>
+									<li><a type="button" data-toggle="modal" data-target="#chairModal">Make Chair</a></li>
 								@endif
 								<li><a href="#">Delete</a></li>
 							</ul>
@@ -79,6 +79,33 @@
 		</table>
 	</div>
 
+	<div class="modal fade" id="chairModal" tabindex="-1" role="dialog" aria-labelledby="chairModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel"></h4>
+				</div>
+				<div class="modal-body">
+					<form class="form">
+						<label for="committees">Committees</label>
+						<select id="committees">
+							<option>Test1</option>
+							<option>Test2</option>
+							<option>Test3</option>
+							<option>Test4</option>
+							<option>Test5</option>
+						</select>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script>
 		$(document).ready(function () {
 			$('#users').DataTable({
@@ -101,7 +128,7 @@
 					{"bSearchable": true, "bSortable": false},
 					{"bSearchable": false, "bSortable": false}
 				]
-			})
+			});
 
 			$('#admins').DataTable({
 				"bPaginate": true,

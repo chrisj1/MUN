@@ -86,7 +86,15 @@ Route::get('/dashboard/requests', 'DashboardController@requests');
 Route::post('/users/{user}/request', 'DashboardController@requestPos');
 Route::get("/dashboard/autoassign/{user}", 'AdminController@beginAutoAssign');
 Route::get('/admin/admin', 'AdminController@admin');
-
+Route::get('assignChair/{committee}/{user}', function () {
+	return redirect("http://www.stjohnsprep.org/uploaded/pdf_files/map/campus_guide_1516_final.pdf");
+});
 Route::get('/418', function () {
 	abort(418);
+});
+
+
+Route::get('/committees/{name}', function ($name){
+	error_log($name);
+	return view('committees.' . $name);
 });

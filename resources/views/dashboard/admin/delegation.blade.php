@@ -72,13 +72,13 @@
 		</table>
 	</div>
 
+	<h1 class="h1 text-center">Delegates</h1>
 	<table class="table table-striped sortable" id="table">
 		<thead>
 		<tr>
 			<th>#</th>
 			<th>Firstname</th>
 			<th>Lastname</th>
-			<th>Requested Committee</th>
 			<th></th>
 		</tr>
 		</thead>
@@ -96,9 +96,6 @@
 					{{ $delegate->lastname }}
 				</td>
 
-				<td>
-					{{ \App\Committee::find($delegate->requested_committee)['committee']}}
-				</td>
 				<td class="action">
 					<a class="confirmation btn btn-danger btn-xs" name="{{$delegate->firstname . $delegate->lastname}}"
 					   style="margin:5px; justify-content:flex-end"

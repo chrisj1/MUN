@@ -7,6 +7,11 @@
 	      href="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.css"/>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	        crossorigin="anonymous"></script>
+	<script type="text/javascript"
+	        src="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
 	<title>@yield('title')</title>
 
 </header>
@@ -44,11 +49,26 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 					   aria-expanded="false">Committees<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
+						<li class="dropdown-header">General Assembly</li>
+						<li><a href="/committees/africanUnion">African Union: Freedom of the Press</a></li>
+						<li><a href="/committees/arctic">General Assembly: Arctic Circle</a></li>
+						<li><a href="/committees/cyber">General Assembly: Digital Geneva Convention</a></li>
+						<li><a href="/committees/women">Commission on the Status of Women: Women's Rights</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">Separated link</a></li>
+						<li class="dropdown-header">Economic and Social Council</li>
+						<li><a href="/committees/who">World Health Organization: Pamdemic Prevention Policy</a></li>
+						<li role="separator" class="divider"></li>
+						<li class="dropdown-header">Specialized</li>
+						<li><a href="/committees/fantasy">Fantasy: Climate Change</a></li>
+						<li><a href="#">MA State Legislature: Opioid Crisis</a></li>
+						<li><a href="#">Senate Judiciary Committee: Prison Privatization</a></li>
+						<li><a href="#">Senate: Automation in the Workforce</a></li>
+						<li><a href="#">Senate Judiciary Committee: Prison Privatization</a></li>
+						<li><a href="#">One Belt One Road Forum: One Belt One Road</a></li>
+						<li role="separator" class="divider"></li>
+						<li class="dropdown-header">Historical</li>
+						<li><a href="#">Joint Crisis: Cuban Missile Crisis</a></li>
+						<li><a href="#">Soviet Central Committee:?????</a></li>
 					</ul>
 				</li>
 				@yield('nav')
@@ -70,18 +90,13 @@
 </body>
 <footer>
 	<div class="container">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-		        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-		        crossorigin="anonymous"></script>
-		<script type="text/javascript"
-		        src="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
 		<script>
 			$(function () {
 				$('[data-toggle="tooltip"]').tooltip()
 			})
 		</script>
 		<div style="">
-			<p class="text-muted credit"> SJPMUN-2016 </p>
+			<p class="text-muted credit"> SJPMUN-2017 </p>
 		</div>
 	</div>
 

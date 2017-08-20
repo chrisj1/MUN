@@ -128,7 +128,6 @@ class DashboardController extends Controller {
 
 		$delegate = new Delegate;
 
-
 		$committees = Committee::all();
 
 		$lunches = Lunch::all();
@@ -154,10 +153,13 @@ class DashboardController extends Controller {
 		$delegate = new Delegate;
 		$delegate->firstname = $request->firstname;
 		$delegate->lastname = $request->lastname;
-		$delegate->requested_committee = $request->requested_committee;
 		$delegate->lunch = $request->lunch;
 		$delegate->user_id = Auth::user()->id;
 		$delegate->save();
+		error_log($request->position);
+		$pos = Position::find($request->position);
+		$pos->delegate = $delegate->id;
+		$pos->save();
 		return back();
 
 	}

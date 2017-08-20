@@ -21,6 +21,7 @@
 					{"orderable": true, "searchable": true},
 					{"orderable": true, "searchable": true},
 					{"orderable": true, "searchable": true},
+					{"orderable": true, "searchable": true},
 					{"orderable": false, "searchable": false}
 				]
 			})
@@ -30,10 +31,7 @@
 
 	<div style="margin: 5%">
 		<div class="row">
-			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addAPosition">Add Single Position</a>
-			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addPositions">Add Multiple Positions</a>
-		</div>
-		<div class="row">
+			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/addPosition">Add Position</a>
 			<a style="margin: 0.3%" class="btn btn-primary" href="/admin/assignPositions">Assign Positions</a>
 		</div>
 	</div>
@@ -43,6 +41,7 @@
 			<tr>
 				<th>#</th>
 				<th>Committee</th>
+				<th>Topic</th>
 				<th>Country/Name/ect.</th>
 				<th>Delegate</th>
 				<th>Delegation</th>
@@ -57,6 +56,9 @@
 					</td>
 					<td>
 						{{ \App\Committee::find($position->committee_id)->committee }}
+					</td>
+					<td>
+						{{ \App\Committee::find($position->committee_id)->topic }}
 					</td>
 					<td>
 						{{ $position->name }}

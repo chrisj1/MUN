@@ -2,10 +2,10 @@
 
 @section('stuff')
 
-	<h1 class="h1 text-center text-primary">Add a Position</h1>
-	<h4 class="h4 text-center text-primary">(Enter multiple positions by separating with commas)</h4>
+	<h1 class="h1 text-center text-primary">Add Position</h1>
+	<h4 class="h4 text-center">(Enter multiple positions by separating with commas)</h4>
 
-	<div style="margin-left: 5%; margin-left: 5%">
+	<div style="margin: 5%;">
 		@if (count($errors) > 0)
 			<div class="alert alert-danger">
 				<ul>
@@ -16,7 +16,7 @@
 			</div>
 		@endif
 
-		<form class="form" method="post" action="/admin/addAPosition">
+		<form class="form" method="post" action="/admin/addPosition">
 			<div class="form-group">{{csrf_field()}}</div>
 			<div class="form-group">
 				<label for="committee" class="form_label">Committee</label>

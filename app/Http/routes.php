@@ -69,11 +69,9 @@ Route::get('/admin/lunches', 'AdminController@lunches');
 Route::get('/admin/addLunch', 'AdminController@addLunch');
 Route::post('/dashboard/admin/addLunch/add', 'AdminController@createLunch');
 Route::get('/admin/lunches/{lunch}/delete', 'AdminController@deleteLunch');
-Route::get('/admin/addAPosition', 'AdminController@addAPosition');
-Route::get('/admin/addPositions', 'AdminController@addPositions');
+Route::get('/admin/addPosition', 'AdminController@addAPosition');
 Route::get('/admin/committees/{committee}/clone', 'AdminController@cloneCommitteeView');
-Route::post('/admin/addAPosition', 'AdminController@createPosition');
-Route::post('/admin/addPositions', 'AdminController@createPositions');
+Route::post('/admin/addPosition', 'AdminController@createPosition');
 Route::post('/admin/{committee}/clone/add', 'AdminController@createClone');
 Route::get('/admin/papers', 'AdminController@briefingPapers');
 Route::get('/download/{briefingPaper}', 'DashboardController@downloadPaper');
@@ -97,7 +95,7 @@ Route::get('/committees/{name}', function ($name){
 	return view('committees.' . $name);
 });
 Route::get('/chair/register', 'ChairController@register');
-Route::get('/dashboard/admin/position/{position}/delete', function (App\Position $position){
+Route::get('/admin/position/{position}/delete', function (App\Position $position){
 	$position->delete();
 	return back();
 });

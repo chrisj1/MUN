@@ -6,6 +6,7 @@ use App\Admin;
 use App\BriefingPaper;
 use App\Committee;
 use App\Delegate;
+use App\GenericPosition;
 use App\Lunch;
 use App\Position;
 use App\User;

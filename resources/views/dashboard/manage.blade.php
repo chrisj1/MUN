@@ -12,7 +12,7 @@
 				<th>#</th>
 				<th>Firstname</th>
 				<th>Lastname</th>
-				<th>Requested Committee</th>
+				<th>Position</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -30,7 +30,7 @@
 					</td>
 
 					<td>
-					{{ \App\Committee::find($delegate->requested_committee)['committee']}}
+					{{ \App\Committee::find($delegate)}}
 
 					<td>
 						<a class="confirmation btn btn-danger btn-xs"
@@ -78,12 +78,11 @@
 					</div>
 
 					<div class="form-group">
-						<label for="requested_committee">Request Committee</label>
-						<select name="requested_committee" class="form-control"
-						        value="{{Request::old('requested_committee')}}">
-							<option value='0'></option>
-							@foreach ($committees->where('clone_of', null) as $committee)
-								<option value={{$committee->id}}>{{$committee->full_name . " - " . $committee->topic}}</option>
+						<label for="position">Position</label>
+						<select name="position" class="form-control"
+						        value="{{Request::old('position')}}">
+							@foreach($positions as $pos)
+								<option value="{{$pos->id}}">{{\App\Committee::find($pos->committee_id)->full_name . "-" . \App\Committee::find($pos->committee_id)->topic . "-" . $pos->name}}</option>
 							@endforeach
 						</select>
 					</div>

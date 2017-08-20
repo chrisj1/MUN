@@ -18,6 +18,7 @@
 	<div>
 		<p>
 		<h1 class="text-center">St. John's Prep Eleventh Annual<br>Model United Nations Conference</h1>
+		<h3 class="text-center">December 9, 2017</h3>
 	</div>
 
 
@@ -27,6 +28,9 @@
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+			<li data-target="#myCarousel" data-slide-to="4"></li>
+
 		</ol>
 
 		<!-- Wrapper for slides -->
@@ -34,8 +38,14 @@
 			<div class="item active">
 				<img class="highlightImage" src="https://photos.smugmug.com/Student-Life/SJP-MUN-X/i-NvQ89kz/0/X2/IMG_6322-X2.jpg" alt="1">
 				<div class="carousel-caption">
-					<h3 class="text-center">December 9, 2017</h3>
-					<h3 class="text-center"><button class="btn btn-xlarge btn-primary">Register</button> </h3>
+					@if(Carbon\Carbon::createFromDate(2017, 10, 1) <= \Carbon\Carbon::now())
+						<h2>Registration is now open</h2>
+						<button href="/register" class="btn btn-primary btn-xlarge">Register</button>
+					@else
+						<h3 class="text-center">Registration opens November 1, 2017</h3><br>
+						<h4>In the meantime you can browse our committees or our about us page.</h4>
+					@endif
+
 				</div>
 			</div>
 
@@ -52,6 +62,22 @@
 
 				<div class="carousel-caption">
 					<h3 class="text-center">more highlights</h3>
+				</div>
+			</div>
+
+			<div class="item">
+				<img class="highlightImage" src="https://photos.smugmug.com/Student-Life/Model-UN-Event-Photos-by-Nik/i-SZGhJpH/0/93a1118a/X3/IMG_3620-X3.jpg" alt="4">
+				<div class="carousel-caption">
+					<h3 class="text-center">Large Variety of Great Committees</h3>
+					<h3 class="text-center"><button class="btn btn-xlarge btn-primary">Check out The Committees</button></h3>
+				</div>
+			</div>
+
+			<div class="item">
+				<img class="highlightImage" src="https://photos.smugmug.com/Student-Life/Model-UN-Event-Photos-by-Nik/i-JbV9kjM/0/79af841f/X3/IMG_3744-X3.jpg" alt="5">
+				<div class="carousel-caption">
+					<h3 class="text-center">Large Variety of Great Committees</h3>
+					<h3 class="text-center"><button class="btn btn-xlarge btn-primary">Check out The Committees</button></h3>
 				</div>
 			</div>
 		</div>

@@ -68,7 +68,7 @@
 						{{ $position->user_id != null ? \App\User::find($position->user_id)->school : "not assigned"}}
 					</td>
 					<td class="action">
-
+						<a class="btn btn-danger btn-xs confirm" href="/dashboard/admin/position/{{$position->id}}/delete">Delete</a>
 					</td>
 				</tr>
 			@endforeach

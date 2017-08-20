@@ -92,9 +92,12 @@ Route::get('assignChair/{committee}/{user}', function () {
 Route::get('/418', function () {
 	abort(418);
 });
-
-
 Route::get('/committees/{name}', function ($name){
 	error_log($name);
 	return view('committees.' . $name);
+});
+Route::get('/chair/register', 'ChairController@register');
+Route::get('/dashboard/admin/position/{position}/delete', function (App\Position $position){
+	$position->delete();
+	return back();
 });

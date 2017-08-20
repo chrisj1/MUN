@@ -345,22 +345,15 @@ class AdminController extends Controller {
 
 	public function createPosition(Request $request) {
 
-		$position = new Position();
-		$position->committee_id = $request->committee;
-		$position->name = $request->position;
-
-		$position->save();
+		$this->processNewPositionRequest($request);
+		error_log($request->committee);
 
 		return redirect('/admin/positions');
 	}
 
 	public function createPositions(Request $request) {
 
-		$position = new Position();
-		$position->committee_id = $request->committee;
-		$position->name = $request->position;
-
-		$position->save();
+		$position = $this->processNewPositionRequest($request);
 		$committees = Committee::all();
 
 		return view('dashboard.admin.addPositions', ['last' => $position, 'committees' => $committees]);
@@ -538,6 +531,25 @@ class AdminController extends Controller {
 		$users = User::all();
 
 		return view('dashboard.admin.admin', ['users' => $users]);
+	}
+
+	public function newPosition($committee, $name) {
+		$position = new Position();
+		$position->committee_id = $committee;
+		$position->name = $name;
+		$position->save();
+	}
+
+	/**
+	 * @param Request $request
+	 */
+	public function processNewPositionRequest(Request $request) {
+		$names = explode(",", $request->position);
+		$lastPosition = null;
+		foreach ($names as $name) {
+			$lastPosition = $this->newPosition($request->committee, trim($name));
+		}
+		return $lastPosition;
 	}
 
 }

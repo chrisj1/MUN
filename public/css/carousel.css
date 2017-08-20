@@ -1,5 +1,5 @@
 .highlightImage {
-	height: 80%;
+	height: auto;
 }
 .carousel-inner{
 	height:100%;
@@ -17,4 +17,8 @@ line-height: normal;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+}
+
+.carousel {
+	min-height: 80%;
 }

@@ -60,15 +60,14 @@
 						<li role="separator" class="divider"></li>
 						<li class="dropdown-header">Specialized</li>
 						<li><a href="/committees/fantasy">Fantasy: Climate Change</a></li>
-						<li><a href="#">MA State Legislature: Opioid Crisis</a></li>
-						<li><a href="#">Senate Judiciary Committee: Prison Privatization</a></li>
-						<li><a href="#">Senate: Automation in the Workforce</a></li>
-						<li><a href="#">Senate Judiciary Committee: Prison Privatization</a></li>
-						<li><a href="#">One Belt One Road Forum: One Belt One Road</a></li>
+						<li><a href="/committees/opioid">MA State Legislature: Opioid Crisis</a></li>
+						<li><a href="/committees/prison">Senate Judiciary Committee: Prison Privatization</a></li>
+						<li><a href="/committees/robots">Senate: Automation in the Workforce</a></li>
+						<li><a href="/committees/china">One Belt One Road Forum: One Belt One Road</a></li>
 						<li role="separator" class="divider"></li>
 						<li class="dropdown-header">Historical</li>
-						<li><a href="#">Joint Crisis: Cuban Missile Crisis</a></li>
-						<li><a href="#">Soviet Central Committee:?????</a></li>
+						<li><a href="/committees/cuba">Joint Crisis: Cuban Missile Crisis</a></li>
+						<li><a href="/committees/ussr">Soviet Central Committee:?????</a></li>
 					</ul>
 				</li>
 				@yield('nav')
@@ -95,9 +94,9 @@
 				$('[data-toggle="tooltip"]').tooltip()
 			})
 		</script>
-		<div style="">
-			<p class="text-muted credit"> SJPMUN-2017 </p>
-		</div>
+	</div>
+	<div style="margin-left: 2%">
+		<p class="text-muted credit">SJPMUN-2017</p>
 	</div>
 
 	<script>

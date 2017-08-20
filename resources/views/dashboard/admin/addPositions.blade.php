@@ -3,6 +3,8 @@
 @section('stuff')
 
 	<h1 class="h1 text-center text-primary">Add Positions</h1>
+	<h4 class="h4 text-center text-primary">(Enter multiple positions by separating with commas)</h4>
+
 
 	<div style="margin-left: 5%; margin-right: 5%">
 		@if (count($errors) > 0)

@@ -19,7 +19,7 @@
 			@foreach ($delegates as $delegate)
 				<tr>
 					<td>
-						{{ $count++ }}
+						{{  $count++ }}
 					</td>
 					<td>
 						{{ $delegate->firstname }}
@@ -105,8 +105,8 @@
 		</div>
 	@else
 		<div class="panel panel-danger">
-			<div class="panel-heading">You have no positions assigned</div>
-			<div class="panel-body">The confrence staff will assign you positions based
+			<div class="panel-heading">You have no positions assigned yet</div>
+			<div class="panel-body">The conference staff will assign you positions based
 				on your requests.
 			</div>
 		</div>

@@ -196,7 +196,6 @@ class DashboardController extends Controller {
 
 		$delegate->firstname = $request->firstname;
 		$delegate->lastname = $request->lastname;
-		$delegate->requested_committee = $request->requested_committee;
 		$delegate->lunch = $request->lunch;
 		$delegate->save();
 		return back();

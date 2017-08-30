@@ -19,6 +19,8 @@
 		<li role="presentation"><a href="/admin/committees">Committees</a></li>
 		<li role="presentation"><a href="/admin/lunches">Lunches</a></li>
 		<li role="presentation"><a href="/admin/papers">Briefing Papers</a></li>
+		<li role="presentation"><a href="/admin/Alerts">Alerts</a></li>
+		<li role="presentation"><a href="/admin/Groups">Groups</a></li>
 		@if(Auth::user()->id == 1)
 			<li role="separator" class="divider"></li>
 			<li role="presentation"><a href="/admin/admin">Administration</a></li>

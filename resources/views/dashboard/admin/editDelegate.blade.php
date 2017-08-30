@@ -26,16 +26,6 @@
 			</div>
 
 			<div class="form-group">
-				<label for="requested_committee">Request Committee</label>
-				<select name="requested_committee" class="form-control">
-					<option value='0'></option>
-					@foreach ($committees as $committee)
-						<option {{$committee->id == $delegate->requested_committee ? "selected" : ""}} value={{$committee->id}}>{{$committee->committee}}</option>
-					@endforeach
-				</select>
-			</div>
-
-			<div class="form-group">
 				<label for="lunch">Lunch</label>
 				<select name="lunch" class="form-control">
 					<option value='0'></option>

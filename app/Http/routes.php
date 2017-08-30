@@ -63,12 +63,13 @@ Route::get('/admin/committees', 'AdminController@committees');
 Route::get('/admin/addCommittee', 'AdminController@addCommittee');
 Route::post('/admin/addCommittee/add', 'AdminController@createCommittee');
 Route::get('/admin/committees/{committee}/delete', 'AdminController@deleteCommittee');
-Route::get('/admin/committees/{committee}/edit', 'AdminController@editCommittee');
+Route::get('/admin/committees/{committee}/edit', 'AdminController@editComemittee');
 Route::post('/admin/addCommittee/{committee}/edit', 'AdminController@editCommitteeSubmit');
 Route::get('/admin/lunches', 'AdminController@lunches');
 Route::get('/admin/addLunch', 'AdminController@addLunch');
 Route::post('/dashboard/admin/addLunch/add', 'AdminController@createLunch');
-Route::get('/admin/lunches/{lunch}/delete', 'AdminController@deleteLunch');
+Route::get('/admin/lunches/{lunch}/delete', 'AdminController@deleteLunch
+');
 Route::get('/admin/addPosition', 'AdminController@addAPosition');
 Route::get('/admin/committees/{committee}/clone', 'AdminController@cloneCommitteeView');
 Route::post('/admin/addPosition', 'AdminController@createPosition');

@@ -118,7 +118,7 @@ class AdminController extends Controller {
 
 		$lunches = Lunch::all();
 
-		return view('dashboard.admin.edit', ['delegate' => $delegate, 'delegates' => $delegates, 'user' => $user, 'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches]);
+		return view('dashboard.admin.editDelegate', ['delegate' => $delegate, 'delegates' => $delegates, 'user' => $user, 'delegate' => $delegate, 'committees' => $committees, 'lunches' => $lunches]);
 	}
 
 	public function payment() {

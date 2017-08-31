@@ -1,7 +1,7 @@
 @extends('dashboard.admin.admin_layout')
 
 @section('stuff')
-
+	<a href="/admin/committees" style="margin: 5%"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return Back</a>
 	<h1 class="h1 text-center text-primary">Clone {{$committee->committee . " - " . $committee->topic}}</h1>
 
 	<div style="margin-left: 5%; margin-right: 5%">

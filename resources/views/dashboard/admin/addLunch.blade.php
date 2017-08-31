@@ -1,6 +1,7 @@
 @extends('dashboard.admin.admin_layout')
 
 @section('stuff')
+	<a href="/admin/lunches" style="margin: 5%"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return Back</a>
 
 	<h1 class="h1 text-center text-primary">Add a Lunch</h1>
 

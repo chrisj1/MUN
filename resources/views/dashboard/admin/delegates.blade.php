@@ -26,7 +26,7 @@
 	</script>
 
 	<h1 class="text-center">Delegates</h1>
-	<div style="margin-right: 5%; margin-left: 5%">
+	<div style="margin-right: 5%; margin-left: 5%; width: 90%">
 		<table class="table table-striped sortable" id="table">
 			<thead>
 			<tr>

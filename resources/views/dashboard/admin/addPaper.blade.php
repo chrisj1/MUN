@@ -1,10 +1,10 @@
 @extends('dashboard.admin.admin_layout')
 
 @section('stuff')
-	<h1 class="h1 text-center text-primary">Add a Briefing Paper</h1>
 
 	<div style="margin-left: 5%; margin-right: 5%">
-		<a href="/admin/papers"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+		<a href="/admin/papers"><span class="glyphicon glyphicon-arrow-left"></span>Return Back</a>
+		<h1 class="h1 text-center text-primary">Add a Briefing Paper</h1>
 		@if (count($errors) > 0)
 			<div class="alert alert-danger">
 				<ul>

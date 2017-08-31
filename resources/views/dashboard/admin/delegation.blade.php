@@ -1,6 +1,8 @@
 @extends('dashboard.admin.admin_layout')
 
 @section('stuff')
+	<a href="/admin/delegations" style="margin: 5%"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return Back</a>
+
 	<h1 class="h1 text-primary text-center">
 		{{$user->school}}
 	</h1>
@@ -71,7 +73,7 @@
 			</tr>
 		</table>
 	</div>
-
+	<br><br><br><br><br><br><br><br><br><br>
 	<h1 class="h1 text-center">Delegates</h1>
 	<table class="table table-striped sortable" id="table">
 		<thead>

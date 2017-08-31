@@ -553,4 +553,30 @@ class AdminController extends Controller {
 		return $lastPosition;
 	}
 
+	public function groups() {
+		$groups = DB::table('groups')->get();
+		return view('dashboard.admin.groups', ['groups'=>$groups]);
+	}
+
+	public function group(Request $request) {
+		$id = $request->id;
+		$group = DB::table('groups')->where('id', $id)->get()[0];
+		$users_std = DB::table('user_groups_pivot')->where('group_id', $group->id)->get();
+		$users = Array();
+		foreach ($users_std as $user) {
+			$id = $user->id;
+			$usr = User::find($id);
+			array_push($users, $usr);
+		}
+		return view('dashboard.admin.group', ['group'=>$group, 'users'=>$users]);
+	}
+
+	public function editGroup(Request $request) {
+		$id = $request->id;
+		DB::table('groups')->where('id', $id)->update([
+			'group_name'=>$request->name,
+			'description'=>$request->description
+		]);
+		return back();
+	}
 }

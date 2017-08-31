@@ -1,11 +1,12 @@
 @extends('dashboard.admin.admin_layout')
 
 @section('stuff')
-
-	<h1 class="h1 text-center text-primary">Add Position</h1>
-	<h4 class="h4 text-center">(Enter multiple positions by separating with commas)</h4>
-
-	<div style="margin: 5%;">
+	<div style="margin-left: 2%; margin-right: 2%">
+		<a href="/admin/positions" style="margin-bottom: 2%">
+			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Return Back
+		</a>
+		<h1 class="h1 text-center text-primary">Add Position</h1>
+		<h4 class="h4 text-center">(Enter multiple positions by separating with commas)</h4>
 		@if (count($errors) > 0)
 			<div class="alert alert-danger">
 				<ul>

@@ -11,7 +11,7 @@ class CreateUserGroupsTable extends Migration
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('user_groups_privet', function (Blueprint $table) {
+		Schema::create('user_groups_pivot', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index();
 			$table->foreign('user_id')->references('id')->on('users');
@@ -26,6 +26,6 @@ class CreateUserGroupsTable extends Migration
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('user_groups_privet');
+		Schema::drop('user_groups_pivot');
 	}
 }

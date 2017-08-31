@@ -5,6 +5,8 @@
 @endsection
 
 @section('stuff')
+	<a href="/admin/delegates" style="margin: 5%"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return Back</a>
+
 	<div style="margin-left: 5%; margin-right: 5%">
 		<a href="/admin/delegates" style="margin-bottom: 2%">
 			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Return Back

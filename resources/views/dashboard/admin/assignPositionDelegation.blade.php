@@ -3,7 +3,7 @@
 @section('stuff')
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
+	<a href="/admin/assignPositions" style="margin: 5%"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return Back</a>
 	<h1 class="text-center">{{$user->school}}</h1>
 
 	<div style="margin-left: 5%; margin-right: 5%">

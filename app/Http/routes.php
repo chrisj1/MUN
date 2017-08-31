@@ -63,7 +63,7 @@ Route::get('/admin/committees', 'AdminController@committees');
 Route::get('/admin/addCommittee', 'AdminController@addCommittee');
 Route::post('/admin/addCommittee/add', 'AdminController@createCommittee');
 Route::get('/admin/committees/{committee}/delete', 'AdminController@deleteCommittee');
-Route::get('/admin/committees/{committee}/edit', 'AdminController@editComemittee');
+Route::get('/admin/committees/{committee}/edit', 'AdminController@editCommittee');
 Route::post('/admin/addCommittee/{committee}/edit', 'AdminController@editCommitteeSubmit');
 Route::get('/admin/lunches', 'AdminController@lunches');
 Route::get('/admin/addLunch', 'AdminController@addLunch');
@@ -92,7 +92,6 @@ Route::get('/418', function () {
 	abort(418);
 });
 Route::get('/committees/{name}', function ($name){
-	error_log($name);
 	return view('committees.' . $name);
 });
 Route::get('/chair/register', 'ChairController@register');
@@ -100,3 +99,6 @@ Route::get('/admin/position/{position}/delete', function (App\Position $position
 	$position->delete();
 	return back();
 });
+Route::get('/admin/groups', 'AdminController@groups');
+Route::get('/dashboard/admin/group/{id}', 'AdminController@group');
+Route::post('/dashboard/admin/group/{id}/edit', 'AdminController@editGroup');

@@ -102,3 +102,10 @@ Route::get('/admin/position/{position}/delete', function (App\Position $position
 Route::get('/admin/groups', 'AdminController@groups');
 Route::get('/dashboard/admin/group/{id}', 'AdminController@group');
 Route::post('/dashboard/admin/group/{id}/edit', 'AdminController@editGroup');
+
+Route::get('/test', function (){
+	Mail::raw('Test', function ($message) {
+		$message->from('mun@stjohnsprep.org', 'SJPMUN');
+		$message->to('cjerrett18@stjohnsprep.org');
+	});
+});

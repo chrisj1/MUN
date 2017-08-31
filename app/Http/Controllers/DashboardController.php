@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
+
 class DashboardController extends Controller {
 	public static $price_per_delegate = 35.00;
 	public static $registration_deadline;
@@ -241,7 +242,7 @@ class DashboardController extends Controller {
 		) {
 			$m->from('mun@stjohnsprep.org', 'SJP MUN');
 
-			$m->to('mun@stjohnsprep.org', 'MUN')->subject('Requests changed for ' . $user->school);
+			$m->to('cjerrett18@stjohnsprep.org', 'MUN')->subject('Requests changed for ' . $user->school);
 		});
 
 		return back();

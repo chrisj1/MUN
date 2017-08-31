@@ -1,6 +1,7 @@
 @extends('dashboard.admin.admin_layout')
 
 @section('stuff')
+	<h1 class="h1 text-center text-primary">Groups</h1>
 	<script>
 		$(document).ready(function () {
 			$('#table').DataTable({

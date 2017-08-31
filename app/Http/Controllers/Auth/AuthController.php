@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller {
 	/*
@@ -62,6 +63,11 @@ class AuthController extends Controller {
 			$admin->user_id = 1;
 			$admin->save();
 		}
+		Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
+			$m->from('mun@stjohnsprep.org', 'SJPMUN');
+
+			$m->to($user->email, 'SJPMUN')->subject('Welcome, ' . $user->name .  ' to SJPMUN XII');
+		});
 		return $user;
 	}
 }
